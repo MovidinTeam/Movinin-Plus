@@ -25,14 +25,15 @@ jobs:
         node-version: ${{ matrix.node-version }}
         
     - name: Build backend server
+      env:
+        MI_SMTP_HOST: smtp.gmail.com
+        MI_SMTP_PORT: 587
+        MI_SMTP_USER: test@test.com
+        MI_SMTP_PASS: test
+        DB_URI: mongodb://localhost:27017/test
+        JWT_SECRET: supersecret
       run: |
            cd ./backend
-           echo "MI_SMTP_HOST=smtp.gmail.com" > .env
-           echo "MI_SMTP_PORT=587" >> .env
-           echo "MI_SMTP_USER=test" >> .env
-           echo "MI_SMTP_PASS=test" >> .env
-           echo "DB_URI=mongodb://localhost:27017/test" >> .env
-           echo "JWT_SECRET=supersecret" >> .env
            npm install
            npm run lint
            npm run build
