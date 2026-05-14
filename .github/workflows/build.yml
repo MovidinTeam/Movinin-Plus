@@ -28,6 +28,13 @@ jobs:
       run: |
            cd ./backend
            npm install
+           # Creamos un .env falso para que pase la validación de seguridad
+           echo "MI_SMTP_HOST=smtp.gmail.com" > .env
+           echo "MI_SMTP_PORT=587" >> .env
+           echo "MI_SMTP_USER=test@test.com" >> .env
+           echo "MI_SMTP_PASS=test" >> .env
+           echo "DB_URI=mongodb://localhost:27017/test" >> .env
+           echo "JWT_SECRET=supersecret" >> .env
            npm run lint
            npm run build
     - name: Build admin panel
