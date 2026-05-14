@@ -12,13 +12,22 @@ jobs:
     permissions:
       contents: write
 
+    # Inyectar variables falsas directo al SO para que Jest no falle
+    env:
+      MI_SMTP_HOST: smtp.gmail.com
+      MI_SMTP_PORT: 587
+      MI_SMTP_USER: test@test.com
+      MI_SMTP_PASS: test
+      DB_URI: mongodb://localhost:27017/test
+      JWT_SECRET: supersecret
+
     strategy:
       matrix:
         node-version: [lts/*]
-        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
 
     steps:
     - uses: actions/checkout@v4
+    
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v4
       with:
@@ -28,27 +37,23 @@ jobs:
       run: |
            cd ./backend
            npm install
-           # Creamos un .env falso para que pase la validación de seguridad
-           echo "MI_SMTP_HOST=smtp.gmail.com" > .env
-           echo "MI_SMTP_PORT=587" >> .env
-           echo "MI_SMTP_USER=test@test.com" >> .env
-           echo "MI_SMTP_PASS=test" >> .env
-           echo "DB_URI=mongodb://localhost:27017/test" >> .env
-           echo "JWT_SECRET=supersecret" >> .env
            npm run lint
            npm run build
+
     - name: Build admin panel
       run: |
            cd ./admin
            npm install --force
            npm run lint
            npm run build
+
     - name: Build frontend
       run: |
            cd ./frontend
            npm install --force
            npm run lint
            npm run build
+
     - name: Build mobile app
       run: |
            cd ./mobile
