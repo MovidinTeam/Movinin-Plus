@@ -29,17 +29,17 @@ jobs:
     - name: Build backend server
       env:
         MI_SMTP_HOST: smtp.gmail.com
-        MI_SMTP_PORT: 587
+        MI_SMTP_PORT: "587"
         MI_SMTP_USER: test
         MI_SMTP_PASS: test
-        MI_SMTP_FROM: test@test.com      # ← agrega estos por si acaso
+        MI_SMTP_FROM: test@test.com
         DB_URI: mongodb://localhost:27017/test
         JWT_SECRET: supersecret
       run: |
         cd ./backend
         npm install
         npm run lint
-        npx tsc --build                  # ← compila directo, sin Jest
+        npm run build      # solo build, NO npm test
 
     - name: Build admin panel
       run: |
