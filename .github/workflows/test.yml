@@ -14,7 +14,13 @@ jobs:
 
     runs-on: ubuntu-latest
     environment: test
-    
+
+    services:
+      mongodb:
+        image: mongo:6
+        ports:
+          - 27017:27017
+          
     strategy:
       matrix:
         node-version: [lts/*]
