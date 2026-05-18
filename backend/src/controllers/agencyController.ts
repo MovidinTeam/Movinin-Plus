@@ -27,6 +27,10 @@ export const validate = async (req: Request, res: Response) => {
   const { fullName } = body
 
   try {
+    if (!body || !body.fullName) {
+      res.status(400).send('Falta el campo requerido: fullName')
+      return
+    }
     const keyword = escapeStringRegexp(fullName)
     const options = 'i'
     const user = await User.findOne({

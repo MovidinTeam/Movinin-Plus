@@ -27,6 +27,10 @@ export const validate = async (req: Request, res: Response) => {
   const { language, name } = body
 
   try {
+    if (!body || !body.language || !body.name) {
+      res.status(400).send('Faltan campos obligatorios: language, name')
+      return
+    }
     if (language.length !== 2) {
       throw new Error('Invalid language code')
     }
