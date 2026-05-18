@@ -24,13 +24,15 @@ import * as logger from '../utils/logger'
  */
 export const validate = async (req: Request, res: Response) => {
   const { body }: { body: movininTypes.ValidateLocationPayload } = req
-  const { language, name } = body
 
   try {
     if (!body || !body.language || !body.name) {
       res.status(400).send('Faltan campos obligatorios: language, name')
       return
     }
+
+    const { language, name } = body
+
     if (language.length !== 2) {
       throw new Error('Invalid language code')
     }
