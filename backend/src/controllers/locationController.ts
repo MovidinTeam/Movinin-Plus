@@ -26,7 +26,7 @@ export const validate = async (req: Request, res: Response) => {
   const { body }: { body: movininTypes.ValidateLocationPayload } = req
   const language = body?.language
   const name = body?.name
-  
+
   try {
     if (!body || !body.language || !body.name) {
       res.status(400).send('Faltan campos obligatorios: language, name')
@@ -85,16 +85,20 @@ export const validate = async (req: Request, res: Response) => {
  */
 export const create = async (req: Request, res: Response) => {
   const { body }: { body: movininTypes.UpsertLocationPayload } = req
-  const {
-    country,
-    longitude,
-    latitude,
-    names,
-    image,
-    parentLocation,
-  } = body
 
   try {
+    if (!body || !body.country || !body.longitude || !body.latitude || !body.names) {
+      res.status(400).send('Faltan campos obligatorios para crear la locación')
+      return
+    }
+    const {
+      country,
+      longitude,
+      latitude,
+      names,
+      image,
+      parentLocation,
+    } = body
     if (image) {
       const _image = path.join(env.CDN_TEMP_LOCATIONS, image)
 

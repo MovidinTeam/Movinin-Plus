@@ -59,9 +59,13 @@ export const validate = async (req: Request, res: Response) => {
  */
 export const update = async (req: Request, res: Response) => {
   const { body }: { body: movininTypes.UpdateAgencyPayload } = req
-  const { _id } = body
+  const _id = body?._id
 
   try {
+    if (!body || !_id) {
+      res.status(400).send('Falta el campo requerido: _id')
+      return
+    }
     if (!helper.isValidObjectId(_id)) {
       throw new Error('body._id is not valid')
     }
