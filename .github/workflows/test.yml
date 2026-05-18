@@ -20,7 +20,11 @@ jobs:
         image: mongo:6
         ports:
           - 27017:27017
-          
+      mailhog:
+        image: mailhog/mailhog
+        ports:
+          - 1025:1025  
+            
     strategy:
       matrix:
         node-version: [lts/*]
