@@ -24,13 +24,13 @@ import * as logger from '../utils/logger'
  */
 export const validate = async (req: Request, res: Response) => {
   const { body }: { body: movininTypes.ValidateAgencyPayload } = req
+  const fullName = body?.fullName
 
   try {
     if (!body || !body.fullName) {
       res.status(400).send('Falta el campo requerido: fullName')
       return
     }
-    const { fullName } = body
     const keyword = escapeStringRegexp(fullName)
     const options = 'i'
     const user = await User.findOne({
