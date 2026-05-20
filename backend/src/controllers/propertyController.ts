@@ -27,6 +27,10 @@ export const create = async (req: Request, res: Response) => {
   const { body }: { body: movininTypes.CreatePropertyPayload } = req
 
   try {
+    if (!body) {
+      res.status(400).send('Falta el cuerpo de la petición')
+      return
+    }
     const {
       name,
       type,
@@ -224,7 +228,7 @@ export const create = async (req: Request, res: Response) => {
 export const update = async (req: Request, res: Response) => {
   const { body }: { body: movininTypes.UpdatePropertyPayload } = req
   const _id = body?._id
-  
+
   try {
     if (!body || !_id) {
       res.status(400).send('Falta el campo requerido: _id')
@@ -665,6 +669,10 @@ export const getProperty = async (req: Request, res: Response) => {
 export const getProperties = async (req: Request, res: Response) => {
   try {
     const { body }: { body: movininTypes.GetPropertiesPayload } = req
+    if (!body || !body.agencies) {
+      res.status(400).send('Faltan datos requeridos en el body')
+      return
+    }
     const page = Number.parseInt(req.params.page, 10)
     const size = Number.parseInt(req.params.size, 10)
     const agencies = body.agencies.map((id) => new mongoose.Types.ObjectId(id))
@@ -799,6 +807,10 @@ export const getProperties = async (req: Request, res: Response) => {
 export const getBookingProperties = async (req: Request, res: Response) => {
   try {
     const { body }: { body: movininTypes.GetBookingPropertiesPayload } = req
+    if (!body || !body.agency || !body.location) {
+      res.status(400).send('Faltan datos requeridos: agency o location')
+      return
+    }
     const agency = new mongoose.Types.ObjectId(body.agency)
     const location = new mongoose.Types.ObjectId(body.location)
     const keyword = escapeStringRegexp(String(req.query.s || ''))
@@ -842,6 +854,10 @@ export const getBookingProperties = async (req: Request, res: Response) => {
 export const getFrontendProperties = async (req: Request, res: Response) => {
   try {
     const { body }: { body: movininTypes.GetPropertiesPayload } = req
+    if (!body || !body.agencies || !body.location) {
+      res.status(400).send('Faltan datos requeridos en el body')
+      return
+    }
     const page = Number.parseInt(req.params.page, 10)
     const size = Number.parseInt(req.params.size, 10)
     const agencies = body.agencies.map((id) => new mongoose.Types.ObjectId(id))
