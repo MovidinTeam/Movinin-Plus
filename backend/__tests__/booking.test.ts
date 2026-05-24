@@ -37,14 +37,14 @@ jest.mock('../src/payment/stripe', () => {
     __esModule: true,
     default: {
       customers: {
-        create: jest.fn().mockResolvedValue({ id: 'cus_test_123' } as any),
-        retrieve: jest.fn().mockResolvedValue({ id: 'cus_test_123' } as any),
-        del: jest.fn().mockResolvedValue({ deleted: true } as any)
+        create: (jest.fn() as any).mockResolvedValue({ id: 'cus_test_123' }),
+        retrieve: (jest.fn() as any).mockResolvedValue({ id: 'cus_test_123' }),
+        del: (jest.fn() as any).mockResolvedValue({ deleted: true })
       },
       paymentIntents: {
-        create: jest.fn().mockResolvedValue({ id: 'pi_test_123', client_secret: 'secret' } as any),
-        retrieve: jest.fn().mockResolvedValue({ id: 'pi_test_123', status: 'requires_payment_method' } as any),
-        confirm: jest.fn().mockResolvedValue({ id: 'pi_test_123', status: 'succeeded' } as any)
+        create: (jest.fn() as any).mockResolvedValue({ id: 'pi_test_123', client_secret: 'secret' }),
+        retrieve: (jest.fn() as any).mockResolvedValue({ id: 'pi_test_123', status: 'requires_payment_method' }),
+        confirm: (jest.fn() as any).mockResolvedValue({ id: 'pi_test_123', status: 'succeeded' })
       }
     }
   }
@@ -232,7 +232,7 @@ describe('POST /api/checkout', () => {
       payment_method: 'pm_card_visa',
     })
 
-;(stripeAPI.paymentIntents.retrieve as jest.Mock).mockResolvedValueOnce({ id: paymentIntentId, status: 'succeeded' } as any)
+;(stripeAPI.paymentIntents.retrieve as any).mockResolvedValueOnce({ id: paymentIntentId, status: 'succeeded' })
 
     const renter = await User.findOne({ _id: RENTER1_ID })
     renter!.language = 'fr'
