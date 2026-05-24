@@ -629,9 +629,18 @@ export const signin = async (req: Request, res: Response) => {
  */
 export const socialSignin = async (req: Request, res: Response) => {
   const { body }: { body: movininTypes.SignInPayload } = req
-  const { socialSignInType, accessToken, email: emailFromBody, fullName, avatar, stayConnected, mobile } = body
+  
+  // Extraemos emailFromBody aquí afuera para que el catch lo pueda usar sin llorar
+  const emailFromBody = body?.email
 
   try {
+    if (!body) {
+      res.status(400).send('Request body is missing')
+      return
+    }
+
+    const { socialSignInType, accessToken, fullName, avatar, stayConnected, mobile } = body
+    
     if (!socialSignInType) {
       throw new Error('body.socialSignInType not found')
     }
@@ -729,7 +738,7 @@ export const socialSignin = async (req: Request, res: Response) => {
       .status(200)
       .send(loggedUser)
   } catch (err) {
-    logger.error(`[user.socialSignin] ${i18n.t('ERROR')} ${emailFromBody}`, err)
+    logger.error(`[user.socialSignin] ${i18n.t('ERROR')} ${emailFromBody || 'unknown'}`, err)
     res.status(400).send(i18n.t('ERROR') + err)
   }
 }
