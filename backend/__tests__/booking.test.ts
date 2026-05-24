@@ -1,4 +1,3 @@
-import { jest } from '@jest/globals'
 import 'dotenv/config'
 import request from 'supertest'
 import { nanoid } from 'nanoid'
@@ -15,6 +14,8 @@ import * as env from '../src/config/env.config'
 import stripeAPI from '../src/payment/stripe'
 import Notification from '../src/models/Notification'
 import NotificationCounter from '../src/models/NotificationCounter'
+import { jest } from '@jest/globals'
+
 
 const RENTER1_NAME = 'Renter 1'
 
@@ -29,6 +30,27 @@ let BOOKING_ID: string
 //
 // Connecting and initializing the database before running the test suite
 //
+
+jest.unstable_mockModule('../src/payment/stripe.js', () => ({
+  default: {
+    customers: {
+      create: jest.fn().mockResolvedValue({ id: 'cus_test_123' }),
+      retrieve: jest.fn().mockResolvedValue({ id: 'cus_test_123' }),
+      del: jest.fn().mockResolvedValue({ deleted: true })
+    },
+    paymentIntents: {
+      create: jest.fn().mockResolvedValue({ id: 'pi_test_123', client_secret: 'secret' }),
+      retrieve: jest.fn().mockResolvedValue({ id: 'pi_test_123', status: 'requires_payment_method' }),
+      confirm: jest.fn().mockImplementation(() => {
+        // Cuando se confirma, actualizamos el mock de retrieve para que diga "succeeded"
+        stripeAPI.paymentIntents.retrieve = jest.fn().mockResolvedValue({ id: 'pi_test_123', status: 'succeeded' } as never)
+        return Promise.resolve({ id: 'pi_test_123', status: 'succeeded' })
+      })
+    }
+  }
+}))
+
+
 beforeAll(async () => {
   testHelper.initializeLogger()
 
@@ -150,20 +172,6 @@ describe('POST /api/create-booking', () => {
 
 describe('POST /api/checkout', () => {
   it('should checkout', async () => {
-
-    // --- INICIO DE SIMULACIÓN DE STRIPE ---
-    let paymentStatus = 'requires_payment_method';
-    
-    jest.spyOn(stripeAPI.customers, 'create').mockResolvedValue({ id: 'cus_test_123' } as any);
-    jest.spyOn(stripeAPI.paymentIntents, 'create').mockResolvedValue({ id: 'pi_test_123', client_secret: 'secret' } as any);
-    jest.spyOn(stripeAPI.paymentIntents, 'retrieve').mockImplementation(async () => ({ id: 'pi_test_123', status: paymentStatus } as any));
-    jest.spyOn(stripeAPI.paymentIntents, 'confirm').mockImplementation(async () => {
-      paymentStatus = 'succeeded'; // ¡Cambiamos el estado a pagado cuando el test lo pida!
-      return { id: 'pi_test_123', status: paymentStatus } as any;
-    });
-    jest.spyOn(stripeAPI.customers, 'retrieve').mockResolvedValue({ id: 'cus_test_123' } as any);
-    jest.spyOn(stripeAPI.customers, 'del').mockResolvedValue({ deleted: true } as any);
-    // --- FIN DE SIMULACIÓN DE STRIPE ---
 
     let bookings = await Booking.find({ renter: RENTER1_ID })
     expect(bookings.length).toBe(1)
