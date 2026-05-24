@@ -365,7 +365,7 @@ describe('PUT /api/update-property', () => {
     res = await request(app)
       .put('/api/update-property')
       .set(env.X_ACCESS_TOKEN, token)
-    expect(res.statusCode).toBe(500)
+    expect(res.statusCode).toBe(400)
 
     await testHelper.signout(token)
   })

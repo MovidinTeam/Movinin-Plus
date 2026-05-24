@@ -124,7 +124,7 @@ describe('POST /api/validate-location', () => {
     res = await request(app)
       .post('/api/validate-location')
       .set(env.X_ACCESS_TOKEN, token)
-    expect(res.statusCode).toBe(500)
+    expect(res.statusCode).toBe(400)
 
     await testHelper.signout(token)
   })
@@ -189,7 +189,7 @@ describe('POST /api/create-location', () => {
     res = await request(app)
       .post('/api/create-location')
       .set(env.X_ACCESS_TOKEN, token)
-    expect(res.statusCode).toBe(500)
+    expect(res.statusCode).toBe(400)
 
     await testHelper.signout(token)
   })

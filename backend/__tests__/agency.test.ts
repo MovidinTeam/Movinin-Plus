@@ -77,7 +77,7 @@ describe('POST /api/validate-agency', () => {
     res = await request(app)
       .post('/api/validate-agency')
       .set(env.X_ACCESS_TOKEN, token)
-    expect(res.statusCode).toBe(500)
+    expect(res.statusCode).toBe(400)
 
     await testHelper.signout(token)
 
@@ -175,7 +175,7 @@ describe('PUT /api/update-agency', () => {
     res = await request(app)
       .put('/api/update-agency')
       .set(env.X_ACCESS_TOKEN, token)
-    expect(res.statusCode).toBe(500)
+    expect(res.statusCode).toBe(400)
 
     await testHelper.signout(token)
   })
