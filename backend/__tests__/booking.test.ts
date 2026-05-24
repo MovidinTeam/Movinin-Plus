@@ -31,24 +31,25 @@ let BOOKING_ID: string
 // Connecting and initializing the database before running the test suite
 //
 
-jest.unstable_mockModule('../src/payment/stripe.js', () => ({
-  default: {
-    customers: {
-      create: jest.fn().mockResolvedValue({ id: 'cus_test_123' }),
-      retrieve: jest.fn().mockResolvedValue({ id: 'cus_test_123' }),
-      del: jest.fn().mockResolvedValue({ deleted: true })
-    },
-    paymentIntents: {
-      create: jest.fn().mockResolvedValue({ id: 'pi_test_123', client_secret: 'secret' }),
-      retrieve: jest.fn().mockResolvedValue({ id: 'pi_test_123', status: 'requires_payment_method' }),
-      confirm: jest.fn().mockImplementation(() => {
-        // Cuando se confirma, actualizamos el mock de retrieve para que diga "succeeded"
-        stripeAPI.paymentIntents.retrieve = jest.fn().mockResolvedValue({ id: 'pi_test_123', status: 'succeeded' } as never)
-        return Promise.resolve({ id: 'pi_test_123', status: 'succeeded' })
-      })
+// --- INICIO MOCK STRIPE ---
+jest.mock('../src/payment/stripe', () => {
+  return {
+    __esModule: true,
+    default: {
+      customers: {
+        create: jest.fn().mockResolvedValue({ id: 'cus_test_123' }),
+        retrieve: jest.fn().mockResolvedValue({ id: 'cus_test_123' }),
+        del: jest.fn().mockResolvedValue({ deleted: true })
+      },
+      paymentIntents: {
+        create: jest.fn().mockResolvedValue({ id: 'pi_test_123', client_secret: 'secret' }),
+        retrieve: jest.fn().mockResolvedValue({ id: 'pi_test_123', status: 'requires_payment_method' }),
+        confirm: jest.fn().mockResolvedValue({ id: 'pi_test_123', status: 'succeeded' })
+      }
     }
   }
-}))
+})
+// --- FIN MOCK STRIPE ---
 
 
 beforeAll(async () => {
@@ -230,6 +231,9 @@ describe('POST /api/checkout', () => {
     await stripeAPI.paymentIntents.confirm(paymentIntentId, {
       payment_method: 'pm_card_visa',
     })
+
+    ;(stripeAPI.paymentIntents.retrieve as jest.Mock).mockResolvedValueOnce({ id: paymentIntentId, status: 'succeeded' })
+
     const renter = await User.findOne({ _id: RENTER1_ID })
     renter!.language = 'fr'
     await renter?.save()
