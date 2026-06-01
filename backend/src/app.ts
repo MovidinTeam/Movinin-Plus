@@ -19,6 +19,7 @@ import countryRoutes from './routes/countryRoutes'
 import paypalRoutes from './routes/paypalRoutes'
 import ipinfoRoutes from './routes/ipinfoRoutes'
 import * as helper from './utils/helper'
+import reviewRoutes from './routes/reviewRoutes'
 
 const app = express()
 
@@ -60,6 +61,7 @@ app.use('/', stripeRoutes)
 app.use('/', countryRoutes)
 app.use('/', paypalRoutes)
 app.use('/', ipinfoRoutes)
+app.use('/', reviewRoutes)
 
 if (env.ENABLE_SENTRY) {
   Sentry.setupExpressErrorHandler(app)
