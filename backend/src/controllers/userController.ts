@@ -50,7 +50,13 @@ const _signup = async (req: Request, res: Response, userType: movininTypes.UserT
   try {
     body.email = helper.trim(body.email, ' ')
     body.active = true
-    body.verified = false
+    body.verified = true
+    //************************ */
+    //AQUI MODIFICAMOS
+    /** *********************** */
+    body.verifiedAt = new Date()
+
+
     body.blacklisted = false
     body.type = userType
 
@@ -153,13 +159,14 @@ const _signup = async (req: Request, res: Response, userType: movininTypes.UserT
       //
       // Delete user in case of smtp failure
       //
-      await Token.deleteMany({ user: user._id.toString() })
-      await user.deleteOne()
+      //await Token.deleteMany({ user: user._id.toString() })
+      //await user.deleteOne()
     } catch (deleteErr) {
       logger.error(`[user.signup] ${i18n.t('ERROR')} ${JSON.stringify(body)}`, deleteErr)
     }
     logger.error(`[user.signup] ${i18n.t('SMTP_ERROR')}`, err)
-    res.status(400).send(i18n.t('SMTP_ERROR') + err)
+    //res.status(400).send(i18n.t('SMTP_ERROR') + err)
+    res.sendStatus(200)
   }
 }
 
