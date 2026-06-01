@@ -54,7 +54,7 @@ const _signup = async (req: Request, res: Response, userType: movininTypes.UserT
     //************************ */
     //AQUI MODIFICAMOS
     /** *********************** */
-    body.verifiedAt = new Date()
+
 
 
     body.blacklisted = false
