@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useNavigate, useLocation } from 'react-router-dom'
+
 import {
   Button,
   FormControl,
@@ -20,6 +21,7 @@ import AgencyBadge from '@/components/AgencyBadge'
 import DatePicker from '@/components/DatePicker'
 import Footer from '@/components/Footer'
 import Progress from '@/components/Progress'
+import PropertyReviews from '@/components/PropertyReviews'
 
 import '@/assets/css/property.css'
 
@@ -172,6 +174,8 @@ const Property = () => {
                 <div className="description">
                   <div dangerouslySetInnerHTML={{ __html: property.description }} />
                 </div>
+                
+                <PropertyReviews propertyId={property._id} />
 
                 <div className="property-footer">
                   {env.HIDE_AGENCIES ? <div /> : <AgencyBadge agency={property.agency} />}
