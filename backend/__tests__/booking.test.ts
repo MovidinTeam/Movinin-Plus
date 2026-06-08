@@ -173,7 +173,6 @@ describe('POST /api/create-booking', () => {
 
 describe('POST /api/checkout', () => {
   it('should checkout', async () => {
-
     let bookings = await Booking.find({ renter: RENTER1_ID })
     expect(bookings.length).toBe(1)
 
