@@ -72,7 +72,6 @@ jobs:
            echo MI_PAYPAL_CLIENT_ID=$MI_PAYPAL_CLIENT_ID >> .env
            echo MI_PAYPAL_CLIENT_SECRET=$MI_PAYPAL_CLIENT_SECRET >> .env
            echo MI_ADMIN_EMAIL=$MI_ADMIN_EMAIL >> .env
-           npm run install:dependencies
            npm install
            npm test
       env:
