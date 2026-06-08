@@ -1,0 +1,65 @@
+.property-reviews {
+  border-top: 1px solid #ededed;
+  margin-top: 25px;
+  padding-top: 25px;
+}
+
+.property-reviews-header {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+.property-reviews-header h3 {
+  margin: 0;
+  font-size: 1.5em;
+}
+
+.property-reviews-rating {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.property-review-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-bottom: 25px;
+}
+
+.property-review-form .btn-submit-review {
+  background-color: #232323;
+  align-self: flex-start;
+}
+
+.property-review-login-message,
+.property-review-empty {
+  color: #666;
+}
+
+.property-review-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.property-review-item {
+  border: 1px solid #ededed;
+  border-radius: 4px;
+  padding: 15px;
+  background-color: #fff;
+}
+
+.property-review-item-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+
+.property-review-item p {
+  margin: 0;
+}
