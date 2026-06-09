@@ -150,7 +150,7 @@ describe('POST /api/create-booking', () => {
   })
 })
 
-dedescribe('POST /api/checkout', () => {
+describe('POST /api/checkout', () => {
   it('should checkout', async () => {
     // --- LÍNEAS DE SIMULACIÓN INTEGRADAS Y SEGURAS ---
     jest.spyOn(stripeAPI.customers, 'create').mockResolvedValue({ id: 'cus_test_123' } as any)
