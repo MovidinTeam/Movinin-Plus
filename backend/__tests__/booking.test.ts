@@ -16,7 +16,6 @@ import Notification from '../src/models/Notification'
 import NotificationCounter from '../src/models/NotificationCounter'
 import { jest } from '@jest/globals'
 
-
 const RENTER1_NAME = 'Renter 1'
 
 let AGENCY_ID: string

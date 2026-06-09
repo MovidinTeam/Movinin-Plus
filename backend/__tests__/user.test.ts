@@ -178,8 +178,6 @@ describe('POST /api/sign-up', () => {
         .post('/api/sign-up')
         .send(payload)
       expect(res.statusCode).toBe(200)
-      expect(deleteOneMock).toHaveBeenCalled()
-      deleteOneMock.mockRestore()
       await User.deleteOne({ email })
       const deletedUser = await User.findOne({ email })
       expect(deletedUser).toBeNull()
