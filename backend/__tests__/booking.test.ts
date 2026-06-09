@@ -16,6 +16,30 @@ import Notification from '../src/models/Notification'
 import NotificationCounter from '../src/models/NotificationCounter'
 import { jest } from '@jest/globals'
 
+// --- INICIO MOCK STRIPE SEGURO PARA ES MODULES ---
+jest.mock('../src/payment/stripe', () => {
+  let paymentStatus = 'requires_payment_method'
+  
+  return {
+    __esModule: true,
+    default: {
+      customers: {
+        create: async () => ({ id: 'cus_test_123' }),
+        retrieve: async () => ({ id: 'cus_test_123' }),
+        del: async () => ({ deleted: true })
+      },
+      paymentIntents: {
+        create: async () => ({ id: 'pi_test_123', client_secret: 'secret' }),
+        retrieve: async () => ({ id: 'pi_test_123', status: paymentStatus }),
+        confirm: async () => {
+          paymentStatus = 'succeeded' // Cambia el estado mágico para que pase el test
+          return { id: 'pi_test_123', status: 'succeeded' }
+        }
+      }
+    }
+  }
+})
+// --- FIN MOCK STRIPE ---
 
 const RENTER1_NAME = 'Renter 1'
 
@@ -217,8 +241,6 @@ describe('POST /api/checkout', () => {
     await stripeAPI.paymentIntents.confirm(paymentIntentId, {
       payment_method: 'pm_card_visa',
     })
-
-;(stripeAPI.paymentIntents.retrieve as any).mockResolvedValueOnce({ id: paymentIntentId, status: 'succeeded' })
 
     const renter = await User.findOne({ _id: RENTER1_ID })
     renter!.language = 'fr'

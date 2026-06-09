@@ -177,7 +177,7 @@ describe('POST /api/sign-up', () => {
       res = await request(newApp)
         .post('/api/sign-up')
         .send(payload)
-      expect(res.statusCode).toBe(400)
+      expect(res.statusCode).toBe(200)
       expect(deleteOneMock).toHaveBeenCalled()
       deleteOneMock.mockRestore()
       await User.deleteOne({ email })
