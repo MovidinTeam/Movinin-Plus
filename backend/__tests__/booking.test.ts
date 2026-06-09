@@ -16,30 +16,6 @@ import Notification from '../src/models/Notification'
 import NotificationCounter from '../src/models/NotificationCounter'
 import { jest } from '@jest/globals'
 
-// --- INICIO MOCK STRIPE SEGURO PARA ES MODULES ---
-jest.mock('../src/payment/stripe', () => {
-  let paymentStatus = 'requires_payment_method'
-  
-  return {
-    __esModule: true,
-    default: {
-      customers: {
-        create: async () => ({ id: 'cus_test_123' }),
-        retrieve: async () => ({ id: 'cus_test_123' }),
-        del: async () => ({ deleted: true })
-      },
-      paymentIntents: {
-        create: async () => ({ id: 'pi_test_123', client_secret: 'secret' }),
-        retrieve: async () => ({ id: 'pi_test_123', status: paymentStatus }),
-        confirm: async () => {
-          paymentStatus = 'succeeded' // Cambia el estado mágico para que pase el test
-          return { id: 'pi_test_123', status: 'succeeded' }
-        }
-      }
-    }
-  }
-})
-// --- FIN MOCK STRIPE ---
 
 const RENTER1_NAME = 'Renter 1'
 
@@ -174,16 +150,22 @@ describe('POST /api/create-booking', () => {
   })
 })
 
-describe('POST /api/checkout', () => {
+dedescribe('POST /api/checkout', () => {
   it('should checkout', async () => {
-    // --- LÍNEAS DE SIMULACIÓN  ---
+    // --- LÍNEAS DE SIMULACIÓN INTEGRADAS Y SEGURAS ---
     jest.spyOn(stripeAPI.customers, 'create').mockResolvedValue({ id: 'cus_test_123' } as any)
     jest.spyOn(stripeAPI.customers, 'retrieve').mockResolvedValue({ id: 'cus_test_123' } as any)
     jest.spyOn(stripeAPI.customers, 'del').mockResolvedValue({ deleted: true } as any)
     jest.spyOn(stripeAPI.paymentIntents, 'create').mockResolvedValue({ id: 'pi_test_123', client_secret: 'secret' } as any)
-    jest.spyOn(stripeAPI.paymentIntents, 'retrieve').mockResolvedValue({ id: 'pi_test_123', status: 'requires_payment_method' } as any)
+    
+    // Este espía es dinámico. Responde primero que no está pagado, y a la segunda vez que sí está pagado.
+    jest.spyOn(stripeAPI.paymentIntents, 'retrieve')
+      .mockResolvedValueOnce({ id: 'pi_test_123', status: 'requires_payment_method' } as any)
+      .mockResolvedValueOnce({ id: 'pi_test_123', status: 'succeeded' } as any)
+      
     jest.spyOn(stripeAPI.paymentIntents, 'confirm').mockResolvedValue({ id: 'pi_test_123', status: 'succeeded' } as any)
-    // -----------------------------------------------
+    // ------------------------------------------------
+
     let bookings = await Booking.find({ renter: RENTER1_ID })
     expect(bookings.length).toBe(1)
 
@@ -310,7 +292,6 @@ describe('POST /api/checkout', () => {
       .send(payload)
     expect(res.statusCode).toBe(200)
     expect(res.body.bookingId).toBeTruthy()
-
 
     payload.booking!.property = testHelper.GetRandromObjectIdAsString()
     res = await request(app)
