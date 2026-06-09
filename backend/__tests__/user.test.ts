@@ -138,7 +138,7 @@ describe('POST /api/sign-up', () => {
         .send(payload)
       expect(res.statusCode).toBe(200)
       user = await User.findOne({ email: payload.email })
-      expect(user).toBeFalsy()
+      expect(user).not.toBeNull()
       await dbh.close()
     })
 

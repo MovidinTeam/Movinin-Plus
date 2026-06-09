@@ -152,6 +152,14 @@ describe('POST /api/create-booking', () => {
 
 describe('POST /api/checkout', () => {
   it('should checkout', async () => {
+    // --- LÍNEAS DE SIMULACIÓN  ---
+    jest.spyOn(stripeAPI.customers, 'create').mockResolvedValue({ id: 'cus_test_123' } as any)
+    jest.spyOn(stripeAPI.customers, 'retrieve').mockResolvedValue({ id: 'cus_test_123' } as any)
+    jest.spyOn(stripeAPI.customers, 'del').mockResolvedValue({ deleted: true } as any)
+    jest.spyOn(stripeAPI.paymentIntents, 'create').mockResolvedValue({ id: 'pi_test_123', client_secret: 'secret' } as any)
+    jest.spyOn(stripeAPI.paymentIntents, 'retrieve').mockResolvedValue({ id: 'pi_test_123', status: 'requires_payment_method' } as any)
+    jest.spyOn(stripeAPI.paymentIntents, 'confirm').mockResolvedValue({ id: 'pi_test_123', status: 'succeeded' } as any)
+    // -----------------------------------------------
     let bookings = await Booking.find({ renter: RENTER1_ID })
     expect(bookings.length).toBe(1)
 
