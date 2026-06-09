@@ -31,27 +31,6 @@ let BOOKING_ID: string
 // Connecting and initializing the database before running the test suite
 //
 
-// --- INICIO MOCK STRIPE ---
-jest.mock('../src/payment/stripe', () => {
-  return {
-    __esModule: true,
-    default: {
-      customers: {
-        create: (jest.fn() as any).mockResolvedValue({ id: 'cus_test_123' }),
-        retrieve: (jest.fn() as any).mockResolvedValue({ id: 'cus_test_123' }),
-        del: (jest.fn() as any).mockResolvedValue({ deleted: true })
-      },
-      paymentIntents: {
-        create: (jest.fn() as any).mockResolvedValue({ id: 'pi_test_123', client_secret: 'secret' }),
-        retrieve: (jest.fn() as any).mockResolvedValue({ id: 'pi_test_123', status: 'requires_payment_method' }),
-        confirm: (jest.fn() as any).mockResolvedValue({ id: 'pi_test_123', status: 'succeeded' })
-      }
-    }
-  }
-})
-// --- FIN MOCK STRIPE ---
-
-
 beforeAll(async () => {
   testHelper.initializeLogger()
 

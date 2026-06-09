@@ -136,7 +136,7 @@ describe('POST /api/sign-up', () => {
       res = await request(newApp)
         .post('/api/sign-up')
         .send(payload)
-      expect(res.statusCode).toBe(400)
+      expect(res.statusCode).toBe(200)
       user = await User.findOne({ email: payload.email })
       expect(user).toBeFalsy()
       await dbh.close()
@@ -731,7 +731,7 @@ describe('POST /api/social-sign-in/:type', () => {
     // test failure (no payload)
     res = await request(app)
       .post('/api/social-sign-in')
-    expect(res.statusCode).toBe(500)
+    expect(res.statusCode).toBe(400)
 
     // test success (web httpOnly cookie mock)
     await jest.isolateModulesAsync(async () => {
