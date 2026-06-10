@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Movinin+ · Sprint 0 · IPS 2026-A EPIS-UNSA</title>
+  <title>Movinin+ · Cierre de Sprints · IPS 2026-A EPIS-UNSA</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Manrope:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
@@ -119,7 +119,6 @@
     .sprint-tag{font-family:'JetBrains Mono',monospace;font-size:.68rem;padding:3px 10px;border-radius:6px;white-space:nowrap}
     .s0{background:rgba(0,212,170,.12);color:var(--accent);border:1px solid rgba(0,212,170,.25)}
     .s1,.s2{background:rgba(94,184,255,.1);color:var(--blue);border:1px solid rgba(94,184,255,.25)}
-    .s3,.s4{background:rgba(244,196,48,.1);color:var(--yellow);border:1px solid rgba(244,196,48,.25)}
     .bar-wrap{width:120px;background:var(--surface2);border-radius:4px;height:6px}
     .bar-fill{height:6px;border-radius:4px;background:linear-gradient(90deg,var(--accent),var(--blue))}
     .status-dot{display:inline-flex;align-items:center;gap:6px;font-size:.75rem}
@@ -142,7 +141,7 @@
     .epica-body{display:none;padding:0 28px 24px}
     .epica-card.open .epica-body{display:block}
     .items-table{width:100%;border-collapse:collapse}
-    .items-table th{font-family:'JetBrains Mono',monospace;font-size:.62rem;color:var(--dim);letter-spacing:.1em;text-transform:uppercase;padding:8px 12px;text-align:left;border-bottom:1px solid var(--border)}
+    .items-table th{font-family:'JetBrains Mono',monospace;font-size:#;color:var(--dim);letter-spacing:.1em;text-transform:uppercase;padding:8px 12px;text-align:left;border-bottom:1px solid var(--border)}
     .items-table td{padding:10px 12px;font-size:.8rem;border-bottom:1px solid rgba(26,37,48,.4);vertical-align:top}
     .items-table tr:last-child td{border-bottom:none}
     .item-id{font-family:'JetBrains Mono',monospace;font-size:.68rem;color:var(--accent);white-space:nowrap}
@@ -193,7 +192,7 @@
 <nav>
   <a class="nav-brand" href="#inicio">
     Movinin+
-    <span class="nav-badge">SPRINT 0</span>
+    <span class="nav-badge">SPRINT 2</span>
   </a>
   <ul class="nav-links">
     <li><a href="#inicio">Inicio</a></li>
@@ -208,7 +207,7 @@
 <section id="inicio">
   <div class="hero-glow"></div>
   <div class="hero-glow2"></div>
-  <div class="pill"><span class="pulse"></span>IPS 2026-A · EPIS-UNSA · Sprint 0</div>
+  <div class="pill"><span class="pulse"></span>IPS 2026-A · EPIS-UNSA · Sprint 1 &amp; 2</div>
   <h1>Movinin<span class="accent">+</span><br><span class="dim-txt">Scrum</span> &amp; <span class="accent">DevOps</span></h1>
   <p class="hero-sub">Aplicación de metodología ágil Scrum con prácticas DevOps sobre Movinin, plataforma open source de alquiler de propiedades. Proyecto final — Ingeniería y Procesos de Software · UNSA 2026-A.</p>
   <div class="cta-row">
@@ -216,9 +215,9 @@
     <a class="btn btn-outline" href="#plan">Ver plan →</a>
   </div>
   <div class="hero-meta">
-    <div><div class="meta-num">4</div><div class="meta-label">Sprints planificados</div></div>
-    <div><div class="meta-num">44</div><div class="meta-label">Artículos en backlog</div></div>
-    <div><div class="meta-num">8</div><div class="meta-label">Épicas definidas</div></div>
+    <div><div class="meta-num">3</div><div class="meta-label">Sprints completados</div></div>
+    <div><div class="meta-num">18</div><div class="meta-label">Tareas finalizadas</div></div>
+    <div><div class="meta-num">2</div><div class="meta-label">Bugs resueltos</div></div>
     <div><div class="meta-num">5</div><div class="meta-label">Integrantes del equipo</div></div>
   </div>
 </section>
@@ -333,7 +332,7 @@
 <section id="plan">
   <div class="section-tag">03 — Plan de proyecto</div>
   <h2>Hitos y entregables</h2>
-  <p class="section-desc">Tres hitos con cuatro sprints de 15 días cada uno, del 13 de mayo al 13 de julio de 2026.</p>
+  <p class="section-desc">Sprints de desarrollo bajo metodología Scrum y prácticas DevOps, documentados mediante GitHub Projects.</p>
   <div class="hitos">
 
     <div class="hito active">
@@ -342,56 +341,42 @@
         <div class="hito-header">
           <span class="hito-title">Sprint 0 — Plan de Proyecto</span>
           <span class="hito-date">13 MAY 2026</span>
-          <span class="hito-pct">15% del trabajo</span>
+          <span class="hito-pct" style="color:var(--accent);background:var(--glow);border-color:rgba(0,212,170,0.25)">100% completado</span>
         </div>
         <p class="hito-desc">Configuración del entorno, selección y análisis del producto open source, definición del Product Backlog y publicación del plan en GitHub Pages.</p>
         <div class="hito-tasks">
           <div class="task done-t"><div class="task-check">✓</div>Selección y análisis del producto (Movinin)</div>
           <div class="task done-t"><div class="task-check">✓</div>Configuración del repositorio fork en GitHub</div>
-          <div class="task done-t"><div class="task-check">✓</div>Definición del Product Backlog — 8 épicas e Infraestructura · 35 artículos</div>
-          <div class="task active-t"><div class="task-check"></div>GitHub Projects: tablero Kanban con historias de usuario</div>
-          <div class="task active-t"><div class="task-check"></div>GitHub Pages: este sitio de documentación</div>
-          <div class="task active-t"><div class="task-check"></div>Cronograma de sprints aprobado por el equipo</div>
+          <div class="task done-t"><div class="task-check">✓</div>Definición del Product Backlog</div>
+          <div class="task done-t"><div class="task-check">✓</div>GitHub Projects: tablero Kanban con historias de usuario</div>
+          <div class="task done-t"><div class="task-check">✓</div>GitHub Pages: este sitio de documentación</div>
+          <div class="task done-t"><div class="task-check">✓</div>Cronograma de sprints aprobado por el equipo</div>
         </div>
       </div>
     </div>
 
-    <div class="hito pending">
+    <div class="hito active">
       <div class="hito-dot">H2</div>
       <div class="hito-body">
         <div class="hito-header">
-          <span class="hito-title">Sprint 1 &amp; 2 — Implementación</span>
+          <span class="hito-title">Sprint 1 &amp; 2 — Entorno y Fixes</span>
           <span class="hito-date">10 JUN 2026</span>
-          <span class="hito-pct">60% del trabajo</span>
+          <span class="hito-pct" style="color:var(--accent);background:var(--glow);border-color:rgba(0,212,170,0.25)">100% completado</span>
         </div>
-        <p class="hito-desc">Desarrollo de funcionalidades con integración CI/CD completa. Despliegue continuo a staging y pruebas automatizadas.</p>
+        <p class="hito-desc">Documentación inicial del stack, resolución de bugs críticos que bloqueaban el pipeline CI/CD y despliegue del entorno local.</p>
         <div class="hito-tasks">
-          <div class="task"><div class="task-check"></div>Épica 1: Reseñas y Calificaciones</div>
-          <div class="task"><div class="task-check"></div>Épica 2: Chat en Tiempo Real</div>
-          <div class="task"><div class="task-check"></div>Épica 3: Favoritos / Lista de deseos</div>
-          <div class="task"><div class="task-check"></div>Épica 4: Sistema de Mantenimiento</div>
-          <div class="task"><div class="task-check"></div>Pipeline CI/CD con GitHub Actions operativo</div>
-          <div class="task"><div class="task-check"></div>Demo pública del Sprint publicada en GitHub Pages</div>
-        </div>
-      </div>
-    </div>
-
-    <div class="hito pending">
-      <div class="hito-dot">H3</div>
-      <div class="hito-body">
-        <div class="hito-header">
-          <span class="hito-title">Sprint 3 &amp; 4 — Mejoras y Documentación</span>
-          <span class="hito-date">13 JUL 2026</span>
-          <span class="hito-pct">100% del trabajo</span>
-        </div>
-        <p class="hito-desc">Épicas restantes, documentación técnica completa del proceso Scrum+DevOps y artículo final en formato IEEE.</p>
-        <div class="hito-tasks">
-          <div class="task"><div class="task-check"></div>Épica 5: Descuentos y Cupones</div>
-          <div class="task"><div class="task-check"></div>Épica 6: Dashboard de Analytics</div>
-          <div class="task"><div class="task-check"></div>Épicas 7 y 8: Pagos Locales y Multi-moneda</div>
-          <div class="task"><div class="task-check"></div>Infraestructura: Seeds y Validación de Roles</div>
-          <div class="task"><div class="task-check"></div>Burndown chart generado automáticamente por Actions</div>
-          <div class="task"><div class="task-check"></div>Artículo final en formato IEEE</div>
+          <div class="task done-t"><div class="task-check">✓</div>Documentar stack tecnológico en Github Pages</div>
+          <div class="task done-t"><div class="task-check">✓</div>Plan de proyecto</div>
+          <div class="task done-t"><div class="task-check">✓</div>Realizar presentación utilizando GitHub Page sobre el proyecto</div>
+          <div class="task done-t"><div class="task-check">✓</div>Hacer fork del repositorio movinin y configurar entorno local</div>
+          <div class="task done-t"><div class="task-check">✓</div>Definir roles Scrum del equipo</div>
+          <div class="task done-t"><div class="task-check">✓</div>Levantar movinin con Docker Compose localmente</div>
+          <div class="task done-t"><div class="task-check">✓</div>Crear Definition of Done (DoD) del equipo</div>
+          <div class="task done-t"><div class="task-check">✓</div>Fix: Bloqueo del pipeline (Timeout) por incompatibilidad de mocks</div>
+          <div class="task done-t"><div class="task-check">✓</div>Fix: Fallo en el pipeline por errores de formato de ESLint</div>
+          <div class="task done-t"><div class="task-check">✓</div>Documentar módulos y componentes en Github Wilki</div>
+          <div class="task done-t"><div class="task-check">✓</div>Documentar guía instalación local en Wiki</div>
+          <div class="task done-t"><div class="task-check">✓</div>Documentar arquitectura de software en Wiki</div>
         </div>
       </div>
     </div>
@@ -402,7 +387,7 @@
 <section id="cronograma">
   <div class="section-tag">04 — Cronograma</div>
   <h2>Calendario de sprints</h2>
-  <p class="section-desc">Cuatro sprints de 15 días. Rol de Scrum Leader rotativo por sprint.</p>
+  <p class="section-desc">Cierre de hito técnico. Entregas y configuraciones completadas exitosamente.</p>
   <table class="cronograma-table fade-up">
     <thead>
       <tr>
@@ -415,207 +400,70 @@
         <td style="color:var(--muted);font-family:'JetBrains Mono',monospace;font-size:.75rem">28 Abr – 13 May</td>
         <td>Plan de proyecto, análisis de Movinin, configuración del entorno</td>
         <td style="color:var(--muted);font-size:.78rem">Projects · Pages</td>
-        <td><div class="bar-wrap"><div class="bar-fill" style="width:90%"></div></div></td>
-        <td><span class="status-dot"><span class="dot dot-green"></span>En curso</span></td>
+        <td><div class="bar-wrap"><div class="bar-fill" style="width:100%"></div></div></td>
+        <td><span class="status-dot"><span class="dot dot-green"></span>Completado</span></td>
       </tr>
       <tr>
         <td><span class="sprint-tag s1">Sprint 1</span></td>
-        <td style="color:var(--muted);font-family:'JetBrains Mono',monospace;font-size:.75rem">14 May – 28 May</td>
-        <td>Épica 1: Reseñas · Épica 2: Chat en tiempo real</td>
-        <td style="color:var(--muted);font-size:.78rem">Actions · Issues · Projects · Pages</td>
-        <td><div class="bar-wrap"><div class="bar-fill" style="width:0%"></div></div></td>
-        <td><span class="status-dot"><span class="dot dot-gray"></span>Pendiente</span></td>
+        <td style="color:var(--muted);font-family:'JetBrains Mono',monospace;font-size:.75rem">14 May – 27 May</td>
+        <td>Documentación, presentación y setup local</td>
+        <td style="color:var(--muted);font-size:.78rem">Pages · Projects</td>
+        <td><div class="bar-wrap"><div class="bar-fill" style="width:100%"></div></div></td>
+        <td><span class="status-dot"><span class="dot dot-green"></span>Completado</span></td>
       </tr>
       <tr>
         <td><span class="sprint-tag s2">Sprint 2</span></td>
-        <td style="color:var(--muted);font-family:'JetBrains Mono',monospace;font-size:.75rem">29 May – 10 Jun</td>
-        <td>Épica 3: Favoritos · Épica 4: Mantenimiento · Pipeline CI/CD</td>
-        <td style="color:var(--muted);font-size:.78rem">Actions · Issues · Projects · Pages</td>
-        <td><div class="bar-wrap"><div class="bar-fill" style="width:0%"></div></div></td>
-        <td><span class="status-dot"><span class="dot dot-gray"></span>Pendiente</span></td>
-      </tr>
-      <tr>
-        <td><span class="sprint-tag s3">Sprint 3</span></td>
-        <td style="color:var(--muted);font-family:'JetBrains Mono',monospace;font-size:.75rem">11 Jun – 25 Jun</td>
-        <td>Épica 5: Cupones · Épica 6: Analytics · Infraestructura</td>
-        <td style="color:var(--muted);font-size:.78rem">Actions · Issues · Projects · Pages</td>
-        <td><div class="bar-wrap"><div class="bar-fill" style="width:0%"></div></div></td>
-        <td><span class="status-dot"><span class="dot dot-gray"></span>Pendiente</span></td>
-      </tr>
-      <tr>
-        <td><span class="sprint-tag s4">Sprint 4</span></td>
-        <td style="color:var(--muted);font-family:'JetBrains Mono',monospace;font-size:.75rem">26 Jun – 13 Jul</td>
-        <td>Épica 7: Pagos Locales · Épica 8: Multi-moneda · Artículo IEEE</td>
-        <td style="color:var(--muted);font-size:.78rem">Todas las herramientas</td>
-        <td><div class="bar-wrap"><div class="bar-fill" style="width:0%"></div></div></td>
-        <td><span class="status-dot"><span class="dot dot-gray"></span>Pendiente</span></td>
+        <td style="color:var(--muted);font-family:'JetBrains Mono',monospace;font-size:.75rem">28 May – 10 Jun</td>
+        <td>Fixes críticos CI/CD y documentación técnica en Wiki</td>
+        <td style="color:var(--muted);font-size:.78rem">Actions · Wiki</td>
+        <td><div class="bar-wrap"><div class="bar-fill" style="width:100%"></div></div></td>
+        <td><span class="status-dot"><span class="dot dot-green"></span>Completado</span></td>
       </tr>
     </tbody>
   </table>
 </section>
 
 <section id="backlog">
-  <div class="section-tag">05 — Product Backlog</div>
-  <h2>Épicas e historias de usuario</h2>
-  <p class="section-desc">35 artículos definidos tras la revisión grupal (8 épicas + Infraestructura). Haz clic en cada tarjeta para ver el detalle.</p>
+  <div class="section-tag">05 — Backlog del Proyecto</div>
+  <h2>Tareas del Sprint 1 y 2</h2>
+  <p class="section-desc">Cierre e historial de tareas completadas de forma integrada en el tablero de trabajo grupal.</p>
   <div class="epicas-grid">
 
     <div class="epica-card open">
       <div class="epica-header" onclick="toggleEpica(this)">
-        <div class="epica-left"><span class="epica-num">ÉPICA 1</span><span class="epica-title">Reseñas y Calificaciones</span></div>
-        <div class="epica-right"><span class="epica-count">3 artículos</span><span class="epica-arrow">▾</span></div>
+        <div class="epica-left"><span class="epica-num">SPRINT 1</span><span class="epica-title">Documentación y Entorno</span></div>
+        <div class="epica-right"><span class="epica-count">7 tareas</span><span class="epica-arrow">▾</span></div>
       </div>
       <div class="epica-body">
         <table class="items-table">
-          <thead><tr><th>#</th><th>Título</th><th>Descripción</th></tr></thead>
+          <thead><tr><th>#</th><th>Tarea</th><th>Estado</th></tr></thead>
           <tbody>
-            <tr><td class="item-id">R-01</td><td class="item-title">Backend: Lógica completa de reseñas</td><td class="item-desc">Modelo, endpoints de crear/listar, regla de solo-post-booking y recálculo automático del rating promedio en la propiedad. Todo en una sola unidad de trabajo.</td></tr>
-            <tr><td class="item-id">R-02</td><td class="item-title">Filtro por rating en búsqueda</td><td class="item-desc">Agregar parámetro de "rating mínimo" al endpoint de búsqueda de propiedades y al filtro en la UI.</td></tr>
-            <tr><td class="item-id">R-03</td><td class="item-title">UI: Reseñas end-to-end</td><td class="item-desc">Formulario con estrellas y comentario accesible desde el historial de bookings, más visualización de reseñas y rating en el detalle de la propiedad.</td></tr>
+            <tr><td class="item-id">#51</td><td class="item-title">Documentar stack tecnológico en Github Pages</td><td class="item-desc" style="color:var(--accent)">Done</td></tr>
+            <tr><td class="item-id">#47</td><td class="item-title">Plan de proyecto</td><td class="item-desc" style="color:var(--accent)">Done</td></tr>
+            <tr><td class="item-id">#38</td><td class="item-title">Realizar presentación utilizando GitHub Page sobre el proyecto elegido (Movinin)</td><td class="item-desc" style="color:var(--accent)">Done</td></tr>
+            <tr><td class="item-id">#39</td><td class="item-title">Hacer fork del repositorio movinin y configurar entorno local</td><td class="item-desc" style="color:var(--accent)">Done</td></tr>
+            <tr><td class="item-id">#40</td><td class="item-title">Definir roles Scrum del equipo</td><td class="item-desc" style="color:var(--accent)">Done</td></tr>
+            <tr><td class="item-id">#41</td><td class="item-title">Levantar movinin con Docker Compose localmente</td><td class="item-desc" style="color:var(--accent)">Done</td></tr>
+            <tr><td class="item-id">#42</td><td class="item-title">Crear Definition of Done (DoD) del equipo</td><td class="item-desc" style="color:var(--accent)">Done</td></tr>
           </tbody>
         </table>
       </div>
     </div>
 
-    <div class="epica-card">
+    <div class="epica-card open" style="border-color: rgba(94,184,255,.4);">
       <div class="epica-header" onclick="toggleEpica(this)">
-        <div class="epica-left"><span class="epica-num">ÉPICA 2</span><span class="epica-title">Chat en Tiempo Real</span></div>
-        <div class="epica-right"><span class="epica-count">4 artículos</span><span class="epica-arrow">▾</span></div>
+        <div class="epica-left"><span class="epica-num" style="color:var(--blue);border-color:var(--blue)">SPRINT 2</span><span class="epica-title">Fixes de Pipeline y Wiki</span></div>
+        <div class="epica-right"><span class="epica-count">5 tareas</span><span class="epica-arrow">▾</span></div>
       </div>
       <div class="epica-body">
         <table class="items-table">
-          <thead><tr><th>#</th><th>Título</th><th>Descripción</th></tr></thead>
+          <thead><tr><th>#</th><th>Tarea</th><th>Estado</th></tr></thead>
           <tbody>
-            <tr><td class="item-id">C-01</td><td class="item-title">Backend: Modelo y endpoints REST del chat</td><td class="item-desc">Estructura de conversaciones ligadas a un booking, endpoint de historial paginado y endpoint de marcar mensajes como leídos.</td></tr>
-            <tr><td class="item-id">C-02</td><td class="item-title">Servidor de mensajería en tiempo real</td><td class="item-desc">Canal bidireccional sobre el servidor existente para envío y recepción de mensajes sin polling.</td></tr>
-            <tr><td class="item-id">C-03</td><td class="item-title">UI: Pantalla de chat (renter)</td><td class="item-desc">Interfaz con burbujas de mensajes, campo de texto y envío en tiempo real, accesible desde el detalle del booking.</td></tr>
-            <tr><td class="item-id">C-04</td><td class="item-title">UI: Bandeja de conversaciones (agencia) + badge</td><td class="item-desc">Lista de conversaciones activas ordenadas por último mensaje, con indicador visual de mensajes no leídos en la navegación.</td></tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-
-    <div class="epica-card">
-      <div class="epica-header" onclick="toggleEpica(this)">
-        <div class="epica-left"><span class="epica-num">ÉPICA 3</span><span class="epica-title">Favoritos / Wishlist</span></div>
-        <div class="epica-right"><span class="epica-count">2 artículos</span><span class="epica-arrow">▾</span></div>
-      </div>
-      <div class="epica-body">
-        <table class="items-table">
-          <thead><tr><th>#</th><th>Título</th><th>Descripción</th></tr></thead>
-          <tbody>
-            <tr><td class="item-id">F-01</td><td class="item-title">Backend: Lógica completa de favoritos</td><td class="item-desc">Estructura de almacenamiento y los tres endpoints en uno: agregar, quitar y listar favoritos del usuario autenticado.</td></tr>
-            <tr><td class="item-id">F-02</td><td class="item-title">UI: Favoritos end-to-end</td><td class="item-desc">Botón de corazón/marcador con estado visual en cada tarjeta de propiedad, más página "Mis Favoritos" con acceso directo al detalle.</td></tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-
-    <div class="epica-card">
-      <div class="epica-header" onclick="toggleEpica(this)">
-        <div class="epica-left"><span class="epica-num">ÉPICA 4</span><span class="epica-title">Mantenimiento / Incidencias</span></div>
-        <div class="epica-right"><span class="epica-count">5 artículos</span><span class="epica-arrow">▾</span></div>
-      </div>
-      <div class="epica-body">
-        <table class="items-table">
-          <thead><tr><th>#</th><th>Título</th><th>Descripción</th></tr></thead>
-          <tbody>
-            <tr><td class="item-id">M-01</td><td class="item-title">Backend: Crear solicitud (con regla incluida)</td><td class="item-desc">Modelo de incidencia y endpoint de creación. La validación de que el renter tiene un booking activo es criterio de aceptación de esta tarea.</td></tr>
-            <tr><td class="item-id">M-02</td><td class="item-title">Backend: Gestión de solicitudes (agencia)</td><td class="item-desc">Endpoints para listar solicitudes filtradas por propiedad/estado/prioridad y para actualizar el estado de una solicitud.</td></tr>
-            <tr><td class="item-id">M-03</td><td class="item-title">UI: Reporte de incidencia (renter)</td><td class="item-desc">Formulario con descripción, selector de prioridad y carga de fotos, más historial de solicitudes enviadas con estado actual.</td></tr>
-            <tr><td class="item-id">M-04</td><td class="item-title">UI: Panel de mantenimiento (agencia)</td><td class="item-desc">Tablero con todas las solicitudes de las propiedades de la agencia, filtros y botón de cambio de estado.</td></tr>
-            <tr><td class="item-id">M-05</td><td class="item-title">Notificaciones de mantenimiento (email)</td><td class="item-desc">Email a la agencia cuando llega una nueva solicitud; email al renter cuando cambia el estado. Usando el sistema existente.</td></tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-
-    <div class="epica-card">
-      <div class="epica-header" onclick="toggleEpica(this)">
-        <div class="epica-left"><span class="epica-num">ÉPICA 5</span><span class="epica-title">Descuentos, Cupones y Precios Dinámicos</span></div>
-        <div class="epica-right"><span class="epica-count">6 artículos</span><span class="epica-arrow">▾</span></div>
-      </div>
-      <div class="epica-body">
-        <table class="items-table">
-          <thead><tr><th>#</th><th>Título</th><th>Descripción</th></tr></thead>
-          <tbody>
-            <tr><td class="item-id">D-01</td><td class="item-title">Backend: Modelo y CRUD de cupones</td><td class="item-desc">Estructura con código, tipo, valor, expiración y límite de usos. Endpoints de crear/editar/desactivar para admin y agencias.</td></tr>
-            <tr><td class="item-id">D-02</td><td class="item-title">Backend: Validar y aplicar cupón en checkout</td><td class="item-desc">Endpoint que recibe un código, verifica validez (activo, no expirado, usos disponibles) y devuelve el precio final con descuento.</td></tr>
-            <tr><td class="item-id">D-03</td><td class="item-title">Backend: Descuento automático por duración</td><td class="item-desc">Lógica que aplica un porcentaje de descuento configurable cuando el arrendamiento supera un umbral de meses.</td></tr>
-            <tr><td class="item-id">D-04</td><td class="item-title">Backend: Precios por temporada</td><td class="item-desc">Permitir a la agencia definir rangos de fechas con precio diferente. El endpoint devuelve el precio vigente según fechas seleccionadas.</td></tr>
-            <tr><td class="item-id">D-05</td><td class="item-title">UI: Gestión de cupones + campo en checkout</td><td class="item-desc">Pantalla de admin/agencia para cupones, más el input de código en el flujo de pago con descuento reflejado en tiempo real.</td></tr>
-            <tr><td class="item-id">D-06</td><td class="item-title">UI: Precio dinámico en listado y detalle</td><td class="item-desc">Mostrar precio tachado y precio con descuento en la tarjeta de propiedad cuando aplique temporada o descuento por duración.</td></tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-
-    <div class="epica-card">
-      <div class="epica-header" onclick="toggleEpica(this)">
-        <div class="epica-left"><span class="epica-num">ÉPICA 6</span><span class="epica-title">Analytics Dashboard</span></div>
-        <div class="epica-right"><span class="epica-count">3 artículos</span><span class="epica-arrow">▾</span></div>
-      </div>
-      <div class="epica-body">
-        <table class="items-table">
-          <thead><tr><th>#</th><th>Título</th><th>Descripción</th></tr></thead>
-          <tbody>
-            <tr><td class="item-id">A-01</td><td class="item-title">Backend: Endpoints de métricas</td><td class="item-desc">Rutas que devuelven ingresos por mes, tasa de ocupación, días libres vs rentados y comparativa. Filtro por fechas.</td></tr>
-            <tr><td class="item-id">A-02</td><td class="item-title">UI: Gráfico de ingresos + tabla de ocupación</td><td class="item-desc">Gráfico de barras/línea con ingresos mensuales y tabla por propiedad con tasa de ocupación.</td></tr>
-            <tr><td class="item-id">A-03</td><td class="item-title">UI: Vista de métricas por propiedad individual</td><td class="item-desc">Al hacer clic en una propiedad, ver su historial de bookings, ingresos acumulados y días vacíos en el período.</td></tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-
-    <div class="epica-card" style="border-color: rgba(0,212,170,.4);">
-      <div class="epica-header" onclick="toggleEpica(this)">
-        <div class="epica-left"><span class="epica-num" style="color:var(--accent);border-color:var(--accent)">ÉPICA 7</span><span class="epica-title">Pagos Locales - Yape, Plin y Transferencias</span></div>
-        <div class="epica-right"><span class="epica-count">5 artículos</span><span class="epica-arrow">▾</span></div>
-      </div>
-      <div class="epica-body">
-        <table class="items-table">
-          <thead><tr><th>#</th><th>Título</th><th>Descripción</th></tr></thead>
-          <tbody>
-            <tr><td class="item-id">P-01</td><td class="item-title">Módulo abstracto de pagos locales</td><td class="item-desc">Estructura de datos backend para almacenar tipo de pago (Yape/Plin/Banco), nro de operación y estado de validación.</td></tr>
-            <tr><td class="item-id">P-02</td><td class="item-title">Punto final: Generar QR dinámico</td><td class="item-desc">Ruta que devuelve la imagen QR o link de Yape/Plin basada en la agencia y el monto a cobrar.</td></tr>
-            <tr><td class="item-id">P-03</td><td class="item-title">UI: Checkout de pasarela local</td><td class="item-desc">Modificar la vista de pago final para permitir la selección de "Pago Local" vs "Tarjeta".</td></tr>
-            <tr><td class="item-id">P-04</td><td class="item-title">Punto final: Subir voucher (Inquilino)</td><td class="item-desc">Ruta para que el usuario suba la captura de pantalla de su pago tras realizar el abono.</td></tr>
-            <tr><td class="item-id">P-05</td><td class="item-title">UI: Verificación de pagos (Agencia)</td><td class="item-desc">Panel en el dashboard de la agencia para aprobar o rechazar pagos pendientes revisando el voucher adjunto.</td></tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-
-    <div class="epica-card" style="border-color: rgba(244,196,48,.4);">
-      <div class="epica-header" onclick="toggleEpica(this)">
-        <div class="epica-left"><span class="epica-num" style="color:var(--yellow);border-color:var(--yellow)">ÉPICA 8</span><span class="epica-title">Soporte Multi-moneda Dinámico</span></div>
-        <div class="epica-right"><span class="epica-count">5 artículos</span><span class="epica-arrow">▾</span></div>
-      </div>
-      <div class="epica-body">
-        <table class="items-table">
-          <thead><tr><th>#</th><th>Título</th><th>Descripción</th></tr></thead>
-          <tbody>
-            <tr><td class="item-id">L-01</td><td class="item-title">Integración API FX</td><td class="item-desc">Consumo y cacheo diario de tasas de cambio (PEN, USD, EUR) mediante un cron job en el backend.</td></tr>
-            <tr><td class="item-id">L-02</td><td class="item-title">Auto-detección de región</td><td class="item-desc">Middleware que identifica la IP del usuario para asignar Soles (PEN) por defecto al navegar desde Perú.</td></tr>
-            <tr><td class="item-id">L-03</td><td class="item-title">UI: Selector global de divisa</td><td class="item-desc">Dropdown en la barra de navegación para forzar el cambio visual de moneda en toda la aplicación.</td></tr>
-            <tr><td class="item-id">L-04</td><td class="item-title">Refactorización de modelo Precio</td><td class="item-desc">Adaptar la base de datos para almacenar una "moneda base" y calcular la conversión al vuelo según la tasa del día.</td></tr>
-            <tr><td class="item-id">L-05</td><td class="item-title">Reglas de redondeo comercial</td><td class="item-desc">Lógica en el frontend para redondear precios convertidos a PEN de forma atractiva visualmente (ej. terminaciones en .90 o .00).</td></tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-
-    <div class="epica-card" style="border-color: rgba(90,122,117,.4);">
-      <div class="epica-header" onclick="toggleEpica(this)">
-        <div class="epica-left"><span class="epica-num" style="color:var(--muted);border-color:var(--border)">INFRA</span><span class="epica-title">Infraestructura</span></div>
-        <div class="epica-right"><span class="epica-count">2 artículos</span><span class="epica-arrow">▾</span></div>
-      </div>
-      <div class="epica-body">
-        <table class="items-table">
-          <thead><tr><th>#</th><th>Título</th><th>Descripción</th></tr></thead>
-          <tbody>
-            <tr><td class="item-id">I-01</td><td class="item-title">Seeds de base de datos</td><td class="item-desc">Scripts que poblan la BD con datos de prueba realistas: reseñas, cupones, incidencias y chat. Ejecutables con un solo comando.</td></tr>
-            <tr><td class="item-id">I-02</td><td class="item-title">Middleware de validación de roles</td><td class="item-desc">Middleware que verifica que el usuario autenticado tiene relación con el recurso que intenta acceder (renter o agencia dueña).</td></tr>
+            <tr><td class="item-id">#48</td><td class="item-title">Fix: Bloqueo del pipeline (Timeout) por incompatibilidad de mocks ESM...</td><td class="item-desc" style="color:var(--accent)">Done / Bug</td></tr>
+            <tr><td class="item-id">#50</td><td class="item-title">Fix: Fallo en el pipeline por errores de formato de ESLint (saltos de línea)</td><td class="item-desc" style="color:var(--accent)">Done / Bug</td></tr>
+            <tr><td class="item-id">#43</td><td class="item-title">Documentar módulos y componentes en Github Wilki</td><td class="item-desc" style="color:var(--accent)">Done</td></tr>
+            <tr><td class="item-id">#44</td><td class="item-title">Documentar guía instalación local en Wiki</td><td class="item-desc" style="color:var(--accent)">Done</td></tr>
+            <tr><td class="item-id">#45</td><td class="item-title">Documentar arquitectura de software en Wiki</td><td class="item-desc" style="color:var(--accent)">Done</td></tr>
           </tbody>
         </table>
       </div>
