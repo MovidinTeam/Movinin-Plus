@@ -98,7 +98,7 @@ const router = createBrowserRouter([
       { path: '*', element: <NoMatch /> }
     ]
   }
-])
+], { basename: '/Movinin-Plus/' })
 
 const App = () => <RouterProvider router={router} />
 
