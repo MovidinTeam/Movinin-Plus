@@ -31,7 +31,7 @@ COPY --from=build /movinin/backend/node_modules ./node_modules
 COPY --from=packages /movinin/packages /movinin/packages
 
 COPY ./backend ./
-COPY ./backend/.env.docker .env
+# COPY ./backend/.env.docker .env
 
 EXPOSE 4004
 
