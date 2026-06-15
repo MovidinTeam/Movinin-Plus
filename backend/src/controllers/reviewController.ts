@@ -132,3 +132,4 @@ export const getPropertyRating = async (req: Request, res: Response) => {
     return res.status(500).send('Internal server error')
   }
 }
+  
