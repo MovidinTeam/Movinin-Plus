@@ -1,0 +1,1 @@
+import{a as r}from"./rolldown-runtime-JNwBNzZo.js";import{l as t}from"./router-DjnMKTQg.js";var o=r(t()),e=o.createContext(void 0);function n(){return o.useContext(e)}export{e as n,n as t};
