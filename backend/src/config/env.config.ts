@@ -168,7 +168,8 @@ export const COOKIE_OPTIONS: CookieOptions = {
   httpOnly: true, 
   secure: true, 
   signed: true, 
-  sameSite: 'none' 
+  sameSite: 'none',
+  domain: AUTH_COOKIE_DOMAIN
 }
 /**
  * frontend authentication cookie name.
