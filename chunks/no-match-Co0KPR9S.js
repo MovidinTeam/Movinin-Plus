@@ -1,0 +1,1 @@
+import{A as e,ct as r}from"./UserContext-BvM7MfaA.js";var t=new r({fr:{NO_MATCH:"Rien à voir ici !"},en:{NO_MATCH:"Nothing to see here!"}});e(t);export{t};

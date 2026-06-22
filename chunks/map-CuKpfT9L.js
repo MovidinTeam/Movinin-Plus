@@ -1,1 +1,0 @@
-import{A as t,ct as e}from"./UserContext-C3Z8LGBw.js";var s=new e({fr:{SELECT_LOCATION:"Choisir cette destination"},en:{SELECT_LOCATION:"Select Destination"}});t(s);export{s as t};
