@@ -1,0 +1,24 @@
+import express from 'express';
+import multer from 'multer';
+import routeNames from "../config/locationRoutes.config.js";
+import authJwt from "../middlewares/authJwt.js";
+import * as locationController from "../controllers/locationController.js";
+const routes = express.Router();
+routes.route(routeNames.validate).post(authJwt.verifyToken, authJwt.authAgency, authJwt.authAgency, locationController.validate);
+routes.route(routeNames.create).post(authJwt.verifyToken, authJwt.authAgency, locationController.create);
+routes.route(routeNames.update).put(authJwt.verifyToken, authJwt.authAgency, locationController.update);
+routes.route(routeNames.delete).delete(authJwt.verifyToken, authJwt.authAgency, locationController.deleteLocation);
+routes.route(routeNames.getLocation).get(locationController.getLocation);
+routes.route(routeNames.getLocations).get(locationController.getLocations);
+routes.route(routeNames.getLocationsWithPosition).get(locationController.getLocationsWithPosition);
+routes.route(routeNames.checkLocation).get(authJwt.verifyToken, authJwt.authAgency, locationController.checkLocation);
+routes.route(routeNames.getLocationId).get(locationController.getLocationId);
+routes.route(routeNames.createImage).post([authJwt.verifyToken, authJwt.authAgency, multer({
+  storage: multer.memoryStorage()
+}).single('image')], locationController.createImage);
+routes.route(routeNames.updateImage).post([authJwt.verifyToken, authJwt.authAgency, multer({
+  storage: multer.memoryStorage()
+}).single('image')], locationController.updateImage);
+routes.route(routeNames.deleteImage).post(authJwt.verifyToken, authJwt.authAgency, locationController.deleteImage);
+routes.route(routeNames.deleteTempImage).post(authJwt.verifyToken, authJwt.authAgency, locationController.deleteTempImage);
+export default routes;
