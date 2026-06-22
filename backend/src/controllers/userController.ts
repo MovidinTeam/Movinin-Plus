@@ -562,6 +562,12 @@ export const signin = async (req: Request, res: Response) => {
       //
       const cookieOptions: CookieOptions = helper.clone(env.COOKIE_OPTIONS)
 
+      // --- INICIO FIX CORS (GitHub Pages -> Render) ---
+      cookieOptions.sameSite = 'none';
+      cookieOptions.secure = true;
+      delete cookieOptions.domain;
+      // --- FIN FIX CORS ---
+
       if (stayConnected) {
         //
         // Cookies can no longer set an expiration date more than 400 days in the future.
@@ -690,6 +696,12 @@ export const socialSignin = async (req: Request, res: Response) => {
     // Authentication cookies are protected against XST attacks as well via allowedMethods middleware.
     //
     const cookieOptions: CookieOptions = helper.clone(env.COOKIE_OPTIONS)
+
+    // --- INICIO FIX CORS (GitHub Pages -> Render) ---
+      cookieOptions.sameSite = 'none';
+      cookieOptions.secure = true;
+      delete cookieOptions.domain;
+      // --- FIN FIX CORS ---
 
     if (stayConnected) {
       //
