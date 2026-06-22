@@ -49,14 +49,13 @@ jobs:
         npm run build
 
     - name: Build frontend
-      env:
-        VITE_NODE_ENV: production
-        VITE_MI_API_HOST: https://movinin-plus-knzp.onrender.com
-        VITE_MI_CDN_USERS: https://movinin-plus-knzp.onrender.com/cdn/movinin/users
-        VITE_MI_CDN_PROPERTIES: https://movinin-plus-knzp.onrender.com/cdn/movinin/properties
-        VITE_MI_CDN_LOCATIONS: https://movinin-plus-knzp.onrender.com/cdn/movinin/locations
       run: |
         cd ./frontend
+        echo "VITE_NODE_ENV=production" > .env
+        echo "VITE_MI_API_HOST=https://movinin-plus-knzp.onrender.com" >> .env
+        echo "VITE_MI_CDN_USERS=https://movinin-plus-knzp.onrender.com/cdn/movinin/users" >> .env
+        echo "VITE_MI_CDN_PROPERTIES=https://movinin-plus-knzp.onrender.com/cdn/movinin/properties" >> .env
+        echo "VITE_MI_CDN_LOCATIONS=https://movinin-plus-knzp.onrender.com/cdn/movinin/locations" >> .env
         npm install --force
         npm run lint
         npm run build
@@ -73,4 +72,4 @@ jobs:
       uses: peaceiris/actions-gh-pages@v3
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_dir: ./frontend/build
+        publish_dir: ./frontend/dist
