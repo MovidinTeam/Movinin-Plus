@@ -1,0 +1,200 @@
+import { constants } from 'node:fs';
+import asyncFs from 'node:fs/promises';
+import path from 'node:path';
+import mongoose from 'mongoose';
+import validator from 'validator';
+import { nanoid } from 'nanoid';
+/**
+ * Convert string to boolean.
+ *
+ * @export
+ * @param {string} input
+ * @returns {boolean}
+ */
+export const StringToBoolean = input => {
+  try {
+    return Boolean(JSON.parse(input.toLowerCase()));
+  } catch {
+    return false;
+  }
+};
+/**
+ * Check if a file or a folder exists.
+ *
+ * @export
+ * @async
+ * @param {string} filePath
+ * @returns {Promise<boolean>}
+ */
+export const pathExists = async filePath => {
+  try {
+    await asyncFs.access(filePath, constants.F_OK);
+    return true;
+  } catch {
+    return false;
+  }
+};
+/**
+ * Create a folder recursively.
+ *
+ * @export
+ * @async
+ * @param {string} folder
+ * @param {boolean} recursive
+ * @returns {Promise<void>}
+ */
+export const mkdir = async folder => {
+  await asyncFs.mkdir(folder, {
+    recursive: true
+  });
+};
+/**
+ * Removes a start line terminator character from a string.
+ *
+ * @export
+ * @param {string} str
+ * @param {string} char
+ * @returns {string}
+ */
+export const trimStart = (str, char) => {
+  let res = str;
+  while (res.charAt(0) === char) {
+    res = res.substring(1, res.length);
+  }
+  return res;
+};
+/**
+ * Removes a leading and trailing line terminator character from a string.
+ *
+ * @export
+ * @param {string} str
+ * @param {string} char
+ * @returns {string}
+ */
+export const trimEnd = (str, char) => {
+  let res = str;
+  while (res.charAt(res.length - 1) === char) {
+    res = res.substring(0, res.length - 1);
+  }
+  return res;
+};
+/**
+ * Removes a stating, leading and trailing line terminator character from a string.
+ *
+ * @export
+ * @param {string} str
+ * @param {string} char
+ * @returns {string}
+ */
+export const trim = (str, char) => {
+  let res = trimStart(str, char);
+  res = trimEnd(res, char);
+  return res;
+};
+/**
+ * Join two url parts.
+ *
+ * @export
+ * @param {string} part1
+ * @param {string} part2
+ * @returns {string}
+ */
+export const joinURL = (part1, part2) => {
+  const p1 = trimEnd(part1, '/');
+  let p2 = part2;
+  if (part2.charAt(0) === '/') {
+    p2 = part2.substring(1);
+  }
+  return `${p1}/${p2}`;
+};
+/**
+ * Get filename without extension.
+ *
+ * @export
+ * @param {string} filename
+ * @returns {string}
+ */
+export const getFilenameWithoutExtension = filename => path.parse(filename).name;
+/**
+ * Clone an object or an array.
+ *
+ * @param {*} obj
+ * @returns {*}
+ */
+export const clone = obj => Array.isArray(obj) ? Array.from(obj) : {
+  ...obj
+};
+/**
+ * Check ObjectId.
+ *
+ * @param {?string} id
+ * @returns {boolean}
+ */
+export const isValidObjectId = id => mongoose.isValidObjectId(id);
+/**
+ * Check email.
+ *
+ * @param {string} email
+ * @returns {boolean}
+ */
+export const isValidEmail = email => !!email && validator.isEmail(email);
+/**
+ * Generate user token.
+ *
+ * @returns {string}
+ */
+export const generateToken = () => `${nanoid()}-${Date.now()}`;
+/**
+ * The IETF language tag of the locale Checkout is displayed in.
+ *
+ * @param {string} locale
+ * @returns {Stripe.Checkout.SessionCreateParams.Locale}
+ */
+export const getStripeLocale = locale => {
+  const locales = ['bg', 'cs', 'da', 'de', 'el', 'en', 'en-GB', 'es', 'es-419', 'et', 'fi', 'fil', 'fr', 'fr-CA', 'hr', 'hu', 'id', 'it', 'ja', 'ko', 'lt', 'lv', 'ms', 'mt', 'nb', 'nl', 'pl', 'pt', 'pt-BR', 'ro', 'ru', 'sk', 'sl', 'sv', 'th', 'tr', 'vi', 'zh', 'zh-HK', 'zh-TW'];
+  if (locales.includes(locale)) {
+    return locale;
+  }
+  return 'auto';
+};
+/**
+ * Format PayPal price.
+ *
+ * Example:
+ * 1          1.00
+ * 1.2        1.20
+ * 1.341      1.34
+ * 1.345      1.34
+ * 1.378      1.37
+ *
+ * @param {number} price
+ * @returns {string}
+ */
+export const formatPayPalPrice = price => (Math.floor(price * 100) / 100).toFixed(2);
+/**
+ * Delay in milliseconds.
+ *
+ * @param {number} ms
+ * @returns {*}
+ */
+export const delay = ms => new Promise(res => setTimeout(res, ms));
+/**
+ * Safe stringify object.
+ *
+ * @param {*} obj
+ * @returns {string}
+ */
+export const safeStringify = obj => {
+  try {
+    return JSON.stringify(obj);
+  } catch {
+    return '[Unserializable object]';
+  }
+};
+/**
+ * Validate language code (ISO 639-1).
+ *
+ * @param {string} lang
+ * @returns {boolean}
+ */
+export const validateLanguage = lang => /^[a-z]{2}$/.test(lang);

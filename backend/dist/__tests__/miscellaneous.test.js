@@ -1,0 +1,67 @@
+import 'dotenv/config';
+import * as env from "../src/config/env.config.js";
+import * as databaseHelper from "../src/utils/databaseHelper.js";
+import * as mailHelper from "../src/utils/mailHelper.js";
+import * as testHelper from "./testHelper.js";
+import User from "../src/models/User.js"; //
+// Connecting and initializing the database before running the test suite
+//
+beforeAll(async () => {
+  testHelper.initializeLogger();
+  await databaseHelper.connect(env.DB_URI, false, false);
+  testHelper.initializeLogger();
+});
+//
+// Closing and cleaning the database connection after running the test suite
+//
+afterAll(async () => {
+  await databaseHelper.close();
+});
+describe('Test User phone validation', () => {
+  it('should test User phone validation', async () => {
+    await databaseHelper.connect(env.DB_URI, false, false);
+    let res = true;
+    const USER = {
+      email: testHelper.GetRandomEmail(),
+      fullName: 'Renter 1',
+      birthDate: new Date(1990, 5, 20),
+      phone: ''
+    };
+    let userId = '';
+    try {
+      const user = new User(USER);
+      await user.save();
+      userId = user._id.toString();
+      user.phone = 'unknown';
+      await user.save();
+    } catch {
+      res = false;
+    } finally {
+      if (userId) {
+        await User.deleteOne({
+          _id: userId
+        });
+      }
+    }
+    await databaseHelper.close();
+    expect(res).toBeFalsy();
+  });
+});
+describe('Test email sending error', () => {
+  it('should test email sending error', async () => {
+    await databaseHelper.connect(env.DB_URI, false, false);
+    let res = true;
+    try {
+      await mailHelper.sendMail({
+        from: testHelper.GetRandomEmail(),
+        to: 'wrong-email',
+        subject: 'dummy subject',
+        html: 'dummy body'
+      });
+    } catch {
+      res = false;
+    }
+    await databaseHelper.close();
+    expect(res).toBeFalsy();
+  });
+});

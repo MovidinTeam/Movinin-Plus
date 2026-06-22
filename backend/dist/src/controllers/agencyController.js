@@ -1,0 +1,354 @@
+import path from 'node:path';
+import asyncFs from 'node:fs/promises';
+import escapeStringRegexp from 'escape-string-regexp';
+import * as movininTypes from "../../../../packages/movinin-types/index.js";
+import i18n from "../lang/i18n.js";
+import * as env from "../config/env.config.js";
+import User from "../models/User.js";
+import NotificationCounter from "../models/NotificationCounter.js";
+import Notification from "../models/Notification.js";
+import Booking from "../models/Booking.js";
+import Property from "../models/Property.js";
+import * as helper from "../utils/helper.js";
+import * as logger from "../utils/logger.js";
+/**
+ * Validate Agency fullname.
+ *
+ * @export
+ * @async
+ * @param {Request} req
+ * @param {Response} res
+ * @returns {unknown}
+ */
+export const validate = async (req, res) => {
+  const {
+    body
+  } = req;
+  const fullName = body?.fullName;
+  try {
+    if (!body || !body.fullName) {
+      res.status(400).send('Falta el campo requerido: fullName');
+      return;
+    }
+    const keyword = escapeStringRegexp(fullName);
+    const options = 'i';
+    const user = await User.findOne({
+      type: movininTypes.UserType.Agency,
+      fullName: {
+        $regex: new RegExp(`^${keyword}$`),
+        $options: options
+      }
+    });
+    if (user) {
+      res.sendStatus(204);
+    } else {
+      res.sendStatus(200);
+    }
+  } catch (err) {
+    logger.error(`[agency.validate] ${i18n.t('ERROR')} ${fullName}`, err);
+    res.status(400).send(i18n.t('ERROR') + err);
+  }
+};
+/**
+ * Update Agency.
+ *
+ * @export
+ * @async
+ * @param {Request} req
+ * @param {Response} res
+ * @returns {unknown}
+ */
+export const update = async (req, res) => {
+  const {
+    body
+  } = req;
+  const _id = body?._id;
+  try {
+    if (!body || !_id) {
+      res.status(400).send('Falta el campo requerido: _id');
+      return;
+    }
+    if (!helper.isValidObjectId(_id)) {
+      throw new Error('body._id is not valid');
+    }
+    // begin of security check
+    const sessionUserId = req.user?._id;
+    const sessionUser = await User.findById(sessionUserId);
+    if (!sessionUser || sessionUser.type === movininTypes.UserType.User || sessionUser.type === movininTypes.UserType.Agency && sessionUserId !== _id) {
+      logger.error(`[agency.update] Unauthorized attempt to update agency ${_id} by user ${sessionUserId}`);
+      res.status(403).send('Forbidden: You cannot update agency information');
+      return;
+    }
+    // end of security check
+    const agency = await User.findById(_id);
+    if (agency) {
+      const {
+        fullName,
+        phone,
+        location,
+        bio,
+        payLater,
+        blacklisted
+      } = body;
+      agency.fullName = fullName;
+      agency.phone = phone;
+      agency.location = location;
+      agency.bio = bio;
+      agency.payLater = payLater;
+      agency.blacklisted = !!blacklisted;
+      await agency.save();
+      res.json({
+        _id,
+        fullName: agency.fullName,
+        phone: agency.phone,
+        location: agency.location,
+        bio: agency.bio,
+        avatar: agency.avatar,
+        payLater: agency.payLater,
+        blacklisted: agency.blacklisted
+      });
+      return;
+    }
+    logger.error('[agency.update] Agency not found:', _id);
+    res.sendStatus(204);
+  } catch (err) {
+    logger.error(`[agency.update] ${i18n.t('ERROR')} ${_id}`, err);
+    res.status(400).send(i18n.t('ERROR') + err);
+  }
+};
+/**
+ * Delete Agency by ID.
+ *
+ * @export
+ * @async
+ * @param {Request} req
+ * @param {Response} res
+ * @returns {unknown}
+ */
+export const deleteAgency = async (req, res) => {
+  const {
+    id
+  } = req.params;
+  try {
+    // begin of security check
+    const sessionUserId = req.user?._id;
+    const sessionUser = await User.findById(sessionUserId);
+    if (!sessionUser || sessionUser.type != movininTypes.UserType.Admin) {
+      logger.error(`[agency.delete] Unauthorized attempt to delete agency ${id} by user ${sessionUserId}`);
+      res.status(403).send('Forbidden: You cannot delete agency');
+      return;
+    }
+    // end of security check
+    const agency = await User.findById(id);
+    if (agency) {
+      await User.deleteOne({
+        _id: id
+      });
+      if (agency.avatar) {
+        const avatar = path.join(env.CDN_USERS, agency.avatar);
+        if (await helper.pathExists(avatar)) {
+          await asyncFs.unlink(avatar);
+        }
+        await NotificationCounter.deleteMany({
+          user: id
+        });
+        await Notification.deleteMany({
+          user: id
+        });
+        await Booking.deleteMany({
+          agency: id
+        });
+        const properties = await Property.find({
+          agency: id
+        });
+        await Property.deleteMany({
+          agency: id
+        });
+        for (const property of properties) {
+          if (property.image) {
+            const image = path.join(env.CDN_PROPERTIES, property.image);
+            if (await helper.pathExists(image)) {
+              await asyncFs.unlink(image);
+            }
+          }
+          if (property.images) {
+            for (const imageFile of property.images) {
+              const additionalImage = path.join(env.CDN_PROPERTIES, imageFile);
+              if (await helper.pathExists(additionalImage)) {
+                await asyncFs.unlink(additionalImage);
+              }
+            }
+          }
+        }
+      }
+    } else {
+      res.sendStatus(204);
+      return;
+    }
+    res.sendStatus(200);
+  } catch (err) {
+    logger.error(`[agency.delete] ${i18n.t('ERROR')} ${id}`, err);
+    res.status(400).send(i18n.t('ERROR') + err);
+  }
+};
+/**
+ * Get Agency by ID.
+ *
+ * @export
+ * @async
+ * @param {Request} req
+ * @param {Response} res
+ * @returns {unknown}
+ */
+export const getAgency = async (req, res) => {
+  const {
+    id
+  } = req.params;
+  try {
+    const user = await User.findById(id).lean();
+    if (!user) {
+      logger.error('[agency.getAgency] Agency not found:', id);
+      res.sendStatus(204);
+      return;
+    }
+    const {
+      _id,
+      email,
+      fullName,
+      avatar,
+      phone,
+      location,
+      bio,
+      payLater,
+      blacklisted
+    } = user;
+    res.json({
+      _id,
+      email,
+      fullName,
+      avatar,
+      phone,
+      location,
+      bio,
+      payLater,
+      blacklisted
+    });
+  } catch (err) {
+    logger.error(`[agency.getAgency] ${i18n.t('ERROR')} ${id}`, err);
+    res.status(400).send(i18n.t('ERROR') + err);
+  }
+};
+/**
+ * Get Agencies.
+ *
+ * @export
+ * @async
+ * @param {Request} req
+ * @param {Response} res
+ * @returns {unknown}
+ */
+export const getAgencies = async (req, res) => {
+  try {
+    const page = Number.parseInt(req.params.page, 10);
+    const size = Number.parseInt(req.params.size, 10);
+    const keyword = escapeStringRegexp(String(req.query.s || ''));
+    const options = 'i';
+    const data = await User.aggregate([{
+      $match: {
+        type: movininTypes.UserType.Agency,
+        avatar: {
+          $ne: null
+        },
+        fullName: {
+          $regex: keyword,
+          $options: options
+        }
+      }
+    }, {
+      $facet: {
+        resultData: [{
+          $sort: {
+            fullName: 1,
+            _id: 1
+          }
+        }, {
+          $skip: (page - 1) * size
+        }, {
+          $limit: size
+        }],
+        pageInfo: [{
+          $count: 'totalRecords'
+        }]
+      }
+    }], {
+      collation: {
+        locale: env.DEFAULT_LANGUAGE,
+        strength: 2
+      }
+    });
+    data[0].resultData = data[0].resultData.map(agency => {
+      const {
+        _id,
+        fullName,
+        avatar
+      } = agency;
+      return {
+        _id,
+        fullName,
+        avatar
+      };
+    });
+    res.json(data);
+  } catch (err) {
+    logger.error(`[agency.getAgencies] ${i18n.t('ERROR')} ${req.query.s}`, err);
+    res.status(400).send(i18n.t('ERROR') + err);
+  }
+};
+/**
+ * Get all Agencies.
+ *
+ * @export
+ * @async
+ * @param {Request} req
+ * @param {Response} res
+ * @returns {unknown}
+ */
+export const getAllAgencies = async (req, res) => {
+  try {
+    let data = await User.aggregate([{
+      $match: {
+        type: movininTypes.UserType.Agency,
+        avatar: {
+          $ne: null
+        },
+        blacklisted: false
+      }
+    }, {
+      $sort: {
+        fullName: 1,
+        _id: 1
+      }
+    }], {
+      collation: {
+        locale: env.DEFAULT_LANGUAGE,
+        strength: 2
+      }
+    });
+    data = data.map(agency => {
+      const {
+        _id,
+        fullName,
+        avatar
+      } = agency;
+      return {
+        _id,
+        fullName,
+        avatar
+      };
+    });
+    res.json(data);
+  } catch (err) {
+    logger.error(`[agency.getAllAgencies] ${i18n.t('ERROR')}`, err);
+    res.status(400).send(i18n.t('ERROR') + err);
+  }
+};
