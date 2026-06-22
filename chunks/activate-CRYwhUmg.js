@@ -1,1 +1,0 @@
-import{A as t,ct as A}from"./UserContext-CtuJ9S_D.js";var i=new A({fr:{ACTIVATE_HEADING:"Activation du compte",TOKEN_EXPIRED:"Votre lien d'activation du compte a expiré.",ACTIVATE:"Activer"},en:{ACTIVATE_HEADING:"Account Activation",TOKEN_EXPIRED:"Your account activation link expired.",ACTIVATE:"Activate"}});t(i);export{i as t};
