@@ -1,1 +1,0 @@
-import{at as e}from"./UserContext-BvM7MfaA.js";var t=()=>e.get("/api/all-agencies",{withCredentials:!0}).then(e=>e.data),a=(t,a,n)=>e.get(`/api/agencies/${a}/${n}/?s=${encodeURIComponent(t)}`,{withCredentials:!0}).then(e=>e.data);export{t as n,a as t};
