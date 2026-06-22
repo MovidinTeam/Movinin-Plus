@@ -123,6 +123,7 @@ export const signout = async (token: string) => {
   const cookies = res.headers['set-cookie'] as unknown as string[]
   expect(cookies.length).toBe(1)
   expect(cookies[0]).toContain(`${env.X_ACCESS_TOKEN}=;`)
+  expect(cookies[0]).toContain('Expires=Thu, 01 Jan 1970')
 }
 
 export const createAgency = async (email: string, fullName: string) => {
