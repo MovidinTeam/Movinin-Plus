@@ -563,9 +563,9 @@ export const signin = async (req: Request, res: Response) => {
       const cookieOptions: CookieOptions = helper.clone(env.COOKIE_OPTIONS)
 
       // --- INICIO FIX CORS (GitHub Pages -> Render) ---
-      cookieOptions.sameSite = 'none';
-      cookieOptions.secure = true;
-      delete cookieOptions.domain;
+      cookieOptions.sameSite = 'none',
+      cookieOptions.secure = true,
+      delete cookieOptions.domain,
       // --- FIN FIX CORS ---
 
       if (stayConnected) {
@@ -698,9 +698,9 @@ export const socialSignin = async (req: Request, res: Response) => {
     const cookieOptions: CookieOptions = helper.clone(env.COOKIE_OPTIONS)
 
     // --- INICIO FIX CORS (GitHub Pages -> Render) ---
-      cookieOptions.sameSite = 'none';
-      cookieOptions.secure = true;
-      delete cookieOptions.domain;
+      cookieOptions.sameSite = 'none',
+      cookieOptions.secure = true,
+      delete cookieOptions.domain,
       // --- FIN FIX CORS ---
 
     if (stayConnected) {
