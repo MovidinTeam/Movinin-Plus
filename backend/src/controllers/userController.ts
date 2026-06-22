@@ -609,7 +609,7 @@ export const signin = async (req: Request, res: Response) => {
       const cookieName = authHelper.getAuthCookieName(req)
 
       res
-        .clearCookie(cookieName)
+        .clearCookie(cookieName, cookieOptions)
         .cookie(cookieName, token, cookieOptions)
         .status(200)
         .send(loggedUser)
@@ -739,7 +739,7 @@ export const socialSignin = async (req: Request, res: Response) => {
     const cookieName = authHelper.getAuthCookieName(req)
 
     res
-      .clearCookie(cookieName)
+      .clearCookie(cookieName, cookieOptions)
       .cookie(cookieName, token, cookieOptions)
       .status(200)
       .send(loggedUser)
@@ -760,9 +760,10 @@ export const socialSignin = async (req: Request, res: Response) => {
  */
 export const signout = async (req: Request, res: Response) => {
   const cookieName = authHelper.getAuthCookieName(req)
+  const cookieOptions: CookieOptions = helper.clone(env.COOKIE_OPTIONS)
 
   res
-    .clearCookie(cookieName)
+    .clearCookie(cookieName, cookieOptions)
     .sendStatus(200)
 }
 
