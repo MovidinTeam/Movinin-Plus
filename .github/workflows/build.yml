@@ -16,7 +16,7 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [20.x]   # ← Cambiado de 18.x a 20.x (Vite lo requiere)
+        node-version: [20.x]
 
     steps:
     - uses: actions/checkout@v4
@@ -39,7 +39,7 @@ jobs:
         cd ./backend
         npm install
         npm run lint
-        npm run build      # solo build, NO npm test
+        npm run build
 
     - name: Build admin panel
       run: |
@@ -49,6 +49,12 @@ jobs:
         npm run build
 
     - name: Build frontend
+      env:
+        VITE_NODE_ENV: production
+        VITE_MI_API_HOST: https://movinin-plus-knzp.onrender.com
+        VITE_MI_CDN_USERS: https://movinin-plus-knzp.onrender.com/cdn/movinin/users
+        VITE_MI_CDN_PROPERTIES: https://movinin-plus-knzp.onrender.com/cdn/movinin/properties
+        VITE_MI_CDN_LOCATIONS: https://movinin-plus-knzp.onrender.com/cdn/movinin/locations
       run: |
         cd ./frontend
         npm install --force
@@ -67,4 +73,4 @@ jobs:
       uses: peaceiris/actions-gh-pages@v3
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_dir: ./frontend/build   # ajusta esta ruta si es diferente
+        publish_dir: ./frontend/build
