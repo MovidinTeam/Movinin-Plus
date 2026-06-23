@@ -23,6 +23,8 @@ import reviewRoutes from './routes/reviewRoutes'
 
 const app = express()
 
+app.set('trust proxy', 1)
+
 app.use(helmet.contentSecurityPolicy())
 app.use(helmet.dnsPrefetchControl())
 app.use(helmet.crossOriginEmbedderPolicy())
