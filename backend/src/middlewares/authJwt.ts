@@ -33,6 +33,8 @@ const verifyToken = async (req: Request, res: Response, next: NextFunction) => {
   } else {
     token = req.headers[env.X_ACCESS_TOKEN] as string // mobile app and unit tests
   }
+  console.log('signedCookies=', req.signedCookies)
+  console.log('cookies=', req.cookies)
 
   if (!token) {
     res.status(403).send({ message: 'No token provided!' })
