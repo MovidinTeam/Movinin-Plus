@@ -132,12 +132,15 @@ export const socialSignin = (data: movininTypes.SignInPayload): Promise<{ status
  */
 export const signout = async (redirect = true, redirectSignin = false) => {
   const deleteAllCookies = () => {
-    const cookies = document.cookie.split('')
+    const cookies = document.cookie.split(';')
 
-    for (const cookie of cookies) {
+    for (let cookie of cookies) {
       const eqPos = cookie.indexOf('=')
-      const name = eqPos > -1 ? cookie.substring(0, eqPos) : cookie
-      document.cookie = `${name}=expires=Thu, 01 Jan 1970 00:00:00 GMT`
+      // Agregamos .trim() para limpiar los espacios ilegales al inicio del nombre
+      const name = eqPos > -1 ? cookie.substring(0, eqPos).trim() : cookie.trim()
+      
+      // Agregamos el punto y coma (;) y el path=/ para asegurar el borrado global
+      document.cookie = `${name}=;expires=Thu, 01 Jan 1970 00:00:00 GMT;path=/`
     }
   }
 

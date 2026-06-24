@@ -558,6 +558,12 @@ export const signin = async (req: Request, res: Response) => {
       //
       const cookieOptions: CookieOptions = helper.clone(env.COOKIE_OPTIONS)
 
+      cookieOptions.sameSite = 'none'; // Permite que la cookie viaje entre Vercel y Render
+      cookieOptions.secure = true;     // Obligatorio para cookies 'none' en HTTPS
+      delete cookieOptions.domain;     // Borra el dominio conflictivo ("FRONTEND")
+      // -----------------------------------
+
+
       if (stayConnected) {
         //
         // Cookies can no longer set an expiration date more than 400 days in the future.
@@ -677,6 +683,11 @@ export const socialSignin = async (req: Request, res: Response) => {
     // Authentication cookies are protected against XST attacks as well via allowedMethods middleware.
     //
     const cookieOptions: CookieOptions = helper.clone(env.COOKIE_OPTIONS)
+
+      cookieOptions.sameSite = 'none'; // Permite que la cookie viaje entre Vercel y Render
+      cookieOptions.secure = true;     // Obligatorio para cookies 'none' en HTTPS
+      delete cookieOptions.domain;     // Borra el dominio conflictivo ("FRONTEND")
+      // -----------------------------------
 
     if (stayConnected) {
       //
@@ -1500,6 +1511,9 @@ export const checkPassword = async (req: Request, res: Response) => {
       }
 
       const passwordMatch = await bcrypt.compare(password, user.password)
+
+
+
       if (passwordMatch) {
         res.sendStatus(200)
         return
