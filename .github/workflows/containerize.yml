@@ -1,5 +1,9 @@
 name: containerize
 
+permissions:
+  contents: read
+  packages: write
+
 on:
   push:
     branches: [ main ]
@@ -33,16 +37,25 @@ jobs:
         run: |
           cp ${{ matrix.component }}/.env.docker.example ${{ matrix.component }}/.env.docker
 
-      # Uncomment this block if we want to push to GHCR
-      # - name: login-ghcr
-      #   run: echo ${{ secrets.GITHUB_TOKEN }} | docker login ghcr.io -u ${{ github.actor }} --password-stdin
+      - name: Login to GitHub Container Registry
+        uses: docker/login-action@v4
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: build-docker-image
+      - name: build-and-push-docker-image
         run: |
           REPO_PREFIX_LOWER=$(echo "$REPO_PREFIX" | tr '[:upper:]' '[:lower:]')
-          docker build -t $REPO_PREFIX_LOWER:${{ github.sha }} -f ${{ matrix.component }}/Dockerfile .
-          
-          # Uncomment these lines if we want to push images to GHCR
-          # docker push $REPO_PREFIX_LOWER:${{ github.sha }}
-          # docker tag $REPO_PREFIX_LOWER:${{ github.sha }} $REPO_PREFIX_LOWER:latest
-          # docker push $REPO_PREFIX_LOWER:latest
+
+          docker build \
+            -t $REPO_PREFIX_LOWER:${{ github.sha }} \
+            -f ${{ matrix.component }}/Dockerfile .
+
+          docker push $REPO_PREFIX_LOWER:${{ github.sha }}
+
+          docker tag \
+            $REPO_PREFIX_LOWER:${{ github.sha }} \
+            $REPO_PREFIX_LOWER:latest
+
+          docker push $REPO_PREFIX_LOWER:latest
