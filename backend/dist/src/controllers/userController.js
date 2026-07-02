@@ -495,6 +495,10 @@ export const signin = async (req, res) => {
       // Authentication cookies are protected against XST attacks as well via allowedMethods middleware.
       //
       const cookieOptions = helper.clone(env.COOKIE_OPTIONS);
+      cookieOptions.sameSite = 'none'; // Permite que la cookie viaje entre Vercel y Render
+      cookieOptions.secure = true; // Obligatorio para cookies 'none' en HTTPS
+      delete cookieOptions.domain; // Borra el dominio conflictivo ("FRONTEND")
+      // -----------------------------------
       if (stayConnected) {
         //
         // Cookies can no longer set an expiration date more than 400 days in the future.
@@ -610,6 +614,10 @@ export const socialSignin = async (req, res) => {
     // Authentication cookies are protected against XST attacks as well via allowedMethods middleware.
     //
     const cookieOptions = helper.clone(env.COOKIE_OPTIONS);
+    cookieOptions.sameSite = 'none'; // Permite que la cookie viaje entre Vercel y Render
+    cookieOptions.secure = true; // Obligatorio para cookies 'none' en HTTPS
+    delete cookieOptions.domain; // Borra el dominio conflictivo ("FRONTEND")
+    // -----------------------------------
     if (stayConnected) {
       //
       // Cookies can no longer set an expiration date more than 400 days in the future.
