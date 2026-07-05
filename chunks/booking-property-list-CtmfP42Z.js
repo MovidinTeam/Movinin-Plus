@@ -1,1 +1,0 @@
-import{A as e,ct as l}from"./UserContext-CtuJ9S_D.js";var s=new l({fr:{REQUIRED_FIELD:"Veuillez renseigner le champ : ",REQUIRED_FIELDS:"Veuillez renseigner les champs : "},en:{REQUIRED_FIELD:"Please fill in the field: ",REQUIRED_FIELDS:"Please fill in the fields: "}});e(s);export{s as t};
