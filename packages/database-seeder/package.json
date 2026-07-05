@@ -1,0 +1,32 @@
+{
+  "name": "@MovidinTeam/database-seeder",
+  "description": "Herramienta de inicialización y carga de datos para Movinin-Plus",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc --build --verbose",
+    "dev": "tsc --build --watch",
+    "seed": "node dist/index.js",
+    "clean": "rm -rf dist"
+  },
+  "keywords": [
+    "movinin",
+    "database",
+    "seed",
+    "initialization",
+    "data-loader"
+  ],
+  "author": "MovidinTeam",
+  "license": "MIT",
+  "dependencies": {
+    "mongoose": "^9.3.0",
+    "dotenv": "^17.3.1"
+  },
+  "devDependencies": {
+    "@types/node": "^25.5.0",
+    "typescript": "^5.9.3"
+  }
+}

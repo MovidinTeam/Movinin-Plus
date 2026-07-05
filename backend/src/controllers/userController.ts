@@ -50,10 +50,7 @@ const _signup = async (req: Request, res: Response, userType: movininTypes.UserT
   try {
     body.email = helper.trim(body.email, ' ')
     body.active = true
-    body.verified = true
-    //************************ */
-    //AQUI MODIFICAMOS
-    /** *********************** */
+    body.verified = false
     body.blacklisted = false
     body.type = userType
 
@@ -156,14 +153,13 @@ const _signup = async (req: Request, res: Response, userType: movininTypes.UserT
       //
       // Delete user in case of smtp failure
       //
-      //await Token.deleteMany({ user: user._id.toString() })
-      //await user.deleteOne()
+      await Token.deleteMany({ user: user._id.toString() })
+      await user.deleteOne()
     } catch (deleteErr) {
       logger.error(`[user.signup] ${i18n.t('ERROR')} ${JSON.stringify(body)}`, deleteErr)
     }
     logger.error(`[user.signup] ${i18n.t('SMTP_ERROR')}`, err)
-    //res.status(400).send(i18n.t('SMTP_ERROR') + err)
-    res.sendStatus(200)
+    res.status(400).send(i18n.t('SMTP_ERROR') + err)
   }
 }
 
@@ -639,18 +635,9 @@ export const signin = async (req: Request, res: Response) => {
  */
 export const socialSignin = async (req: Request, res: Response) => {
   const { body }: { body: movininTypes.SignInPayload } = req
-  
-  // Extraemos emailFromBody aquí afuera para que el catch lo pueda usar sin llorar
-  const emailFromBody = body?.email
+  const { socialSignInType, accessToken, email: emailFromBody, fullName, avatar, stayConnected, mobile } = body
 
   try {
-    if (!body) {
-      res.status(400).send('Request body is missing')
-      return
-    }
-
-    const { socialSignInType, accessToken, fullName, avatar, stayConnected, mobile } = body
-    
     if (!socialSignInType) {
       throw new Error('body.socialSignInType not found')
     }
@@ -753,7 +740,7 @@ export const socialSignin = async (req: Request, res: Response) => {
       .status(200)
       .send(loggedUser)
   } catch (err) {
-    logger.error(`[user.socialSignin] ${i18n.t('ERROR')} ${emailFromBody || 'unknown'}`, err)
+    logger.error(`[user.socialSignin] ${i18n.t('ERROR')} ${emailFromBody}`, err)
     res.status(400).send(i18n.t('ERROR') + err)
   }
 }
