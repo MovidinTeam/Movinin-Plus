@@ -50,10 +50,17 @@ const createTransporter = async (): Promise<nodemailer.Transporter> => {
     }
 
     const transporter = nodemailer.createTransport(transporterOptions)
-    
-    // Verify connection on startup to catch config errors early
-    await transporter.verify()
-    
+
+    try {
+      // Verify connection on startup to catch config errors early
+      await transporter.verify()
+    } catch (err) {
+      // IMPORTANT: reset the cache on failure so the next call retries
+      // instead of reusing this same rejected promise forever.
+      transporterPromise = null
+      throw err
+    }
+
     return transporter
   })()
 
