@@ -119,9 +119,7 @@
     .cronograma-table tbody tr:hover{background:rgba(0,212,170,.03)}
     .sprint-tag{font-family:'JetBrains Mono',monospace;font-size:.68rem;padding:3px 10px;border-radius:6px;white-space:nowrap}
     .s0{background:rgba(0,212,170,.12);color:var(--accent);border:1px solid rgba(0,212,170,.25)}
-    .s1,.s2,.s3{background:rgba(94,184,255,.1);color:var(--blue);border:1px solid rgba(94,184,255,.25)}
-    .s4{background:rgba(244,196,48,.1);color:var(--yellow);border:1px solid rgba(244,196,48,.25)}
-    .s5{background:rgba(12,17,23,0.6);color:var(--muted);border:1px solid var(--border)}
+    .s1,.s2,.s3,.s4,.s5{background:rgba(94,184,255,.1);color:var(--blue);border:1px solid rgba(94,184,255,.25)}
     .bar-wrap{width:120px;background:var(--surface2);border-radius:4px;height:6px}
     .bar-fill{height:6px;border-radius:4px;background:linear-gradient(90deg,var(--accent),var(--blue))}
     .status-dot{display:inline-flex;align-items:center;gap:6px;font-size:.75rem}
@@ -197,7 +195,7 @@
 <nav>
   <a class="nav-brand" href="#inicio">
     Movinin+
-    <span class="nav-badge">SPRINT 4</span>
+    <span class="nav-badge">ENTREGA FINAL</span>
   </a>
   <ul class="nav-links">
     <li><a href="#inicio">Inicio</a></li>
@@ -220,8 +218,8 @@
     <a class="btn btn-outline" href="#plan">Ver plan →</a>
   </div>
   <div class="hero-meta">
-    <div><div class="meta-num">5</div><div class="meta-label">Sprints planificados</div></div>
-    <div><div class="meta-num">50</div><div class="meta-label">Tareas en backlog</div></div>
+    <div><div class="meta-num">5</div><div class="meta-label">Sprints completados</div></div>
+    <div><div class="meta-num">38</div><div class="meta-label">Historias finalizadas</div></div>
     <div><div class="meta-num">0</div><div class="meta-label">Bugs críticos</div></div>
     <div><div class="meta-num">5</div><div class="meta-label">Integrantes del equipo</div></div>
   </div>
@@ -337,7 +335,7 @@
 <section id="plan">
   <div class="section-tag">03 — Plan de proyecto</div>
   <h2>Hitos y entregables</h2>
-  <p class="section-desc">Desarrollo simulado desde cero utilizando metodología Scrum y organización de 50 tareas en GitHub Projects.</p>
+  <p class="section-desc">Desarrollo simulado desde cero utilizando metodología Scrum y organización de historias de usuario en GitHub Projects.</p>
   <div class="hitos">
 
     <div class="hito active">
@@ -345,7 +343,7 @@
       <div class="hito-body">
         <div class="hito-header">
           <span class="hito-title">Sprints 1, 2 &amp; 3 — Core Técnico y Web</span>
-          <span class="hito-date">10 JUN 2026</span>
+          <span class="hito-date">20 JUN 2026</span>
           <span class="hito-pct" style="color:var(--accent);background:var(--glow);border-color:rgba(0,212,170,0.25)">100% completado</span>
         </div>
         <p class="hito-desc">Construcción e integración de la arquitectura base, capa de autenticación, administración de inventarios, lógica web y el motor de reservas con Checkout.</p>
@@ -364,35 +362,35 @@
       <div class="hito-body">
         <div class="hito-header">
           <span class="hito-title">Sprint 4 — Experiencia Mobile y Notificaciones</span>
-          <span class="hito-date">24 JUN 2026</span>
-          <span class="hito-pct" style="color:var(--yellow);background:rgba(244,196,48,.1);border-color:rgba(244,196,48,.25)">En curso</span>
+          <span class="hito-date">04 JUL 2026</span>
+          <span class="hito-pct" style="color:var(--accent);background:var(--glow);border-color:rgba(0,212,170,0.25)">100% completado</span>
         </div>
         <p class="hito-desc">Desarrollo de la aplicación nativa en smartphones y el ecosistema de alertas push en tiempo real.</p>
         <div class="hito-tasks">
-          <div class="task active-t"><div class="task-check"></div>Inicializar App Móvil con Expo y React Navigation</div>
-          <div class="task active-t"><div class="task-check"></div>Implementar Login nativo y almacenamiento seguro del token</div>
-          <div class="task active-t"><div class="task-check"></div>Diseñar buscador y FlatList adaptada de propiedades</div>
-          <div class="task active-t"><div class="task-check"></div>Detalle de la propiedad e historial de reservas en app móvil</div>
-          <div class="task active-t"><div class="task-check"></div>Configurar Expo Push Notifications y vinculación con Backend</div>
+          <div class="task done-t"><div class="task-check">✓</div>Inicializar App Móvil con Expo y React Navigation</div>
+          <div class="task done-t"><div class="task-check">✓</div>Implementar Login nativo y almacenamiento seguro del token</div>
+          <div class="task done-t"><div class="task-check">✓</div>Diseñar buscador y FlatList adaptada de propiedades</div>
+          <div class="task done-t"><div class="task-check">✓</div>Detalle de la propiedad e historial de reservas en app móvil</div>
+          <div class="task done-t"><div class="task-check">✓</div>Configurar Expo Push Notifications y vinculación con Backend</div>
         </div>
       </div>
     </div>
 
-    <div class="hito pending">
+    <div class="hito active">
       <div class="hito-dot">H3</div>
       <div class="hito-body">
         <div class="hito-header">
           <span class="hito-title">Sprint 5 — Despliegue en la Nube y Cierre</span>
-          <span class="hito-date">13 JUL 2026</span>
-          <span class="hito-pct" style="color:var(--muted);background:var(--surface2);border-color:var(--border)">Por hacer / Proyectado</span>
+          <span class="hito-date">18 JUL 2026</span>
+          <span class="hito-pct" style="color:var(--accent);background:var(--glow);border-color:rgba(0,212,170,0.25)">100% completado</span>
         </div>
         <p class="hito-desc">Auditoría global de seguridad, despliegue definitivo de microservicios y documentación técnica en la Wiki.</p>
         <div class="hito-tasks">
-          <div class="task"><div class="task-check"></div>Auditar CORS, Rate Limiting y sanitización contra NoSQL Injections</div>
-          <div class="task"><div class="task-check"></div>Integrar Sentry en producción para Node, React y Expo</div>
-          <div class="task"><div class="task-check"></div>Desplegar Base de Datos en clúster definitivo de MongoDB Atlas</div>
-          <div class="task"><div class="task-check"></div>Desplegar frontends en Vercel y servidor API en Render</div>
-          <div class="task"><div class="task-check"></div>Configurar dominios personalizados, SSL (HTTPS) y documentar README/Wiki</div>
+          <div class="task done-t"><div class="task-check">✓</div>Auditar CORS, Rate Limiting y sanitización contra NoSQL Injections</div>
+          <div class="task done-t"><div class="task-check">✓</div>Integrar Sentry en producción para Node, React y Expo</div>
+          <div class="task done-t"><div class="task-check">✓</div>Desplegar Base de Datos en clúster definitivo de MongoDB Atlas</div>
+          <div class="task done-t"><div class="task-check">✓</div>Desplegar frontends en Vercel y servidor API en Render</div>
+          <div class="task done-t"><div class="task-check">✓</div>Configurar dominios personalizados, SSL (HTTPS) y documentar README/Wiki</div>
         </div>
       </div>
     </div>
@@ -413,33 +411,33 @@
     <tbody>
       <tr>
         <td><span class="sprint-tag s1">Sprint 1</span></td>
-        <td style="color:var(--muted);font-family:'JetBrains Mono',monospace;font-size:.75rem">14 May – 27 May</td>
+        <td style="color:var(--muted);font-family:'JetBrains Mono',monospace;font-size:.75rem">10 May – 23 May</td>
         <td>Fase 1: Infraestructura Base <br>Fase 2: Core Autenticación</td>
         <td><span class="status-dot"><span class="dot dot-green"></span>Completado</span></td>
       </tr>
       <tr>
         <td><span class="sprint-tag s2">Sprint 2</span></td>
-        <td style="color:var(--muted);font-family:'JetBrains Mono',monospace;font-size:.75rem">28 May – 10 Jun</td>
+        <td style="color:var(--muted);font-family:'JetBrains Mono',monospace;font-size:.75rem">24 May – 06 Jun</td>
         <td>Fase 3: Panel de Administración <br>Fase 4: Gestión de Inventario</td>
         <td><span class="status-dot"><span class="dot dot-green"></span>Completado</span></td>
       </tr>
       <tr>
         <td><span class="sprint-tag s3">Sprint 3</span></td>
-        <td style="color:var(--muted);font-family:'JetBrains Mono',monospace;font-size:.75rem">11 Jun – 24 Jun</td>
+        <td style="color:var(--muted);font-family:'JetBrains Mono',monospace;font-size:.75rem">07 Jun – 20 Jun</td>
         <td>Fase 5: Frontend Web Cliente <br>Fase 6: Reservas y Checkout</td>
         <td><span class="status-dot"><span class="dot dot-green"></span>Completado</span></td>
       </tr>
       <tr>
         <td><span class="sprint-tag s4">Sprint 4</span></td>
-        <td style="color:var(--muted);font-family:'JetBrains Mono',monospace;font-size:.75rem">25 Jun – 08 Jul</td>
+        <td style="color:var(--muted);font-family:'JetBrains Mono',monospace;font-size:.75rem">21 Jun – 04 Jul</td>
         <td>Fase 7: Aplicación Móvil (React Native / Expo)</td>
-        <td><span class="status-dot"><span class="dot dot-yellow"></span>En proceso</span></td>
+        <td><span class="status-dot"><span class="dot dot-green"></span>Completado</span></td>
       </tr>
       <tr>
         <td><span class="sprint-tag s5">Sprint 5</span></td>
-        <td style="color:var(--muted);font-family:'JetBrains Mono',monospace;font-size:.75rem">09 Jul – 13 Jul</td>
+        <td style="color:var(--muted);font-family:'JetBrains Mono',monospace;font-size:.75rem">05 Jul – 18 Jul</td>
         <td>Fase 8: Despliegue a Producción y QA Final</td>
-        <td><span class="status-dot"><span class="dot dot-gray"></span>Por hacer</span></td>
+        <td><span class="status-dot"><span class="dot dot-green"></span>Completado</span></td>
       </tr>
     </tbody>
   </table>
@@ -447,125 +445,118 @@
 
 <section id="backlog">
   <div class="section-tag">05 — Backlog del Proyecto</div>
-  <h2>Backlog del Proyecto (50 Tareas)</h2>
-  <p class="section-desc">Desglose técnico de la construcción de Movinin, organizado por Sprints.</p>
+  <h2>Backlog del Proyecto (38 Historias)</h2>
+  <p class="section-desc">Desglose de Historias de Usuario desarrolladas para la construcción de Movinin+.</p>
   <div class="epicas-grid">
 
+    <!-- SPRINT 1 -->
     <div class="epica-card">
       <div class="epica-header" onclick="toggleEpica(this)">
-        <div class="epica-left"><span class="epica-num">SPRINT 1</span><span class="epica-title">Arquitectura Base y Autenticación</span></div>
-        <div class="epica-right"><span class="epica-count">13 tareas</span><span class="epica-arrow">▾</span></div>
+        <div class="epica-left"><span class="epica-num">SPRINT 1</span><span class="epica-title">Autenticación Inicial y Configuración</span></div>
+        <div class="epica-right"><span class="epica-count">5 historias</span><span class="epica-arrow">▾</span></div>
       </div>
       <div class="epica-body">
         <table class="items-table">
-          <thead><tr><th>Type</th><th>Título de la Tarea / Historia</th><th>Estado</th></tr></thead>
+          <thead><tr><th>ID</th><th>Título de la Historia de Usuario</th><th>Estado</th></tr></thead>
           <tbody>
-            <tr><td class="item-id">Task</td><td class="item-title">Inicializar repositorio y configurar monorepo</td><td class="item-desc" style="color:var(--accent)">Done</td></tr>
-            <tr><td class="item-id">Task</td><td class="item-title">Configurar pipeline de CI/CD (GitHub Actions) y linter (ESLint)</td><td class="item-desc" style="color:var(--accent)">Done</td></tr>
-            <tr><td class="item-id">Task</td><td class="item-title">Diseñar arquitectura BD y levantar MongoDB Atlas</td><td class="item-desc" style="color:var(--accent)">Done</td></tr>
-            <tr><td class="item-id">Task</td><td class="item-title">Configurar estructura servidor Express, .env y conexión DB</td><td class="item-desc" style="color:var(--accent)">Done</td></tr>
-            <tr><td class="item-id">Task</td><td class="item-title">Implementar Docker y Docker Compose local</td><td class="item-desc" style="color:var(--accent)">Done</td></tr>
-            <tr><td class="item-id">Task</td><td class="item-title">Configurar bucket estático (CDN) para imágenes</td><td class="item-desc" style="color:var(--accent)">Done</td></tr>
-            <tr><td class="item-id">Task</td><td class="item-title">Implementar modelos de datos de Usuario y Token</td><td class="item-desc" style="color:var(--accent)">Done</td></tr>
-            <tr><td class="item-id">Task</td><td class="item-title">Desarrollar endpoints REST para Registro y Bcrypt</td><td class="item-desc" style="color:var(--accent)">Done</td></tr>
-            <tr><td class="item-id">Task</td><td class="item-title">Implementar sistema de login con JWT y protección de rutas</td><td class="item-desc" style="color:var(--accent)">Done</td></tr>
-            <tr><td class="item-id">Task</td><td class="item-title">Configurar servicio SMTP y envío de correos transaccionales</td><td class="item-desc" style="color:var(--accent)">Done</td></tr>
-            <tr><td class="item-id">Task</td><td class="item-title">Implementar flujo de verificación de cuenta por correo</td><td class="item-desc" style="color:var(--accent)">Done</td></tr>
-            <tr><td class="item-id">Task</td><td class="item-title">Implementar flujo de recuperación y reseteo de contraseña</td><td class="item-desc" style="color:var(--accent)">Done</td></tr>
-            <tr><td class="item-id">Task</td><td class="item-title">Implementar endpoints de gestión de perfil (Datos y Avatar)</td><td class="item-desc" style="color:var(--accent)">Done</td></tr>
+            <tr><td class="item-id">US13</td><td class="item-title">Como Agencia, quiero iniciar sesión en mi panel privado y ver solo mis datos</td><td class="item-desc" style="color:var(--accent)">Done</td></tr>
+            <tr><td class="item-id">US01</td><td class="item-title">Como Administrador, quiero iniciar sesión en el panel seguro</td><td class="item-desc" style="color:var(--accent)">Done</td></tr>
+            <tr><td class="item-id">US02</td><td class="item-title">Como Administrador, quiero recuperar mi contraseña olvidada</td><td class="item-desc" style="color:var(--accent)">Done</td></tr>
+            <tr><td class="item-id">US03</td><td class="item-title">Como Administrador, quiero cambiar mi contraseña desde el perfil</td><td class="item-desc" style="color:var(--accent)">Done</td></tr>
+            <tr><td class="item-id">US04</td><td class="item-title">Como Administrador, quiero registrar y activar cuentas de Agencias</td><td class="item-desc" style="color:var(--accent)">Done</td></tr>
           </tbody>
         </table>
       </div>
     </div>
 
+    <!-- SPRINT 2 -->
     <div class="epica-card">
       <div class="epica-header" onclick="toggleEpica(this)">
-        <div class="epica-left"><span class="epica-num" style="color:var(--blue);border-color:var(--blue)">SPRINT 2</span><span class="epica-title">Admin Panel e Inventario</span></div>
-        <div class="epica-right"><span class="epica-count">10 tareas</span><span class="epica-arrow">▾</span></div>
+        <div class="epica-left"><span class="epica-num" style="color:var(--blue);border-color:var(--blue)">SPRINT 2</span><span class="epica-title">Admin Panel e Inventario Global</span></div>
+        <div class="epica-right"><span class="epica-count">9 historias</span><span class="epica-arrow">▾</span></div>
       </div>
       <div class="epica-body">
         <table class="items-table">
-          <thead><tr><th>Type</th><th>Título de la Tarea / Historia</th><th>Estado</th></tr></thead>
+          <thead><tr><th>ID</th><th>Título de la Historia de Usuario</th><th>Estado</th></tr></thead>
           <tbody>
-            <tr><td class="item-id">Story</td><td class="item-title">Como Administrador, quiero iniciar sesión en un panel seguro</td><td class="item-desc" style="color:var(--accent)">Done</td></tr>
-            <tr><td class="item-id">Story</td><td class="item-title">Como Administrador, quiero crear, listar y editar usuarios</td><td class="item-desc" style="color:var(--accent)">Done</td></tr>
-            <tr><td class="item-id">Story</td><td class="item-title">Como Administrador, quiero gestionar (CRUD) la lista de ciudades</td><td class="item-desc" style="color:var(--accent)">Done</td></tr>
-            <tr><td class="item-id">Task</td><td class="item-title">Implementar internacionalización (i18n) base en admin panel</td><td class="item-desc" style="color:var(--accent)">Done</td></tr>
-            <tr><td class="item-id">Story</td><td class="item-title">Como Agencia, quiero un panel para gestionar mis datos y propiedades</td><td class="item-desc" style="color:var(--accent)">Done</td></tr>
-            <tr><td class="item-id">Task</td><td class="item-title">Implementar modelo de datos de Propiedad en DB</td><td class="item-desc" style="color:var(--accent)">Done</td></tr>
-            <tr><td class="item-id">Story</td><td class="item-title">Como Agencia, quiero crear y listar propiedades de inventario</td><td class="item-desc" style="color:var(--accent)">Done</td></tr>
-            <tr><td class="item-id">Story</td><td class="item-title">Como Agencia, quiero subir y gestionar múltiples imágenes para una propiedad</td><td class="item-desc" style="color:var(--accent)">Done</td></tr>
-            <tr><td class="item-id">Story</td><td class="item-title">Como Agencia, quiero editar características, disponibilidad y precio de propiedades</td><td class="item-desc" style="color:var(--accent)">Done</td></tr>
-            <tr><td class="item-id">Story</td><td class="item-title">Como Administrador, quiero poder ver el inventario global de todas las agencias</td><td class="item-desc" style="color:var(--accent)">Done</td></tr>
+            <tr><td class="item-id">US05</td><td class="item-title">Como Administrador, quiero listar, editar y suspender Agencias</td><td class="item-desc" style="color:var(--accent)">Done</td></tr>
+            <tr><td class="item-id">US06</td><td class="item-title">Como Administrador, quiero gestionar (CRUD) la lista de Países</td><td class="item-desc" style="color:var(--accent)">Done</td></tr>
+            <tr><td class="item-id">US07</td><td class="item-title">Como Administrador, quiero gestionar (CRUD) las Ubicaciones/Ciudades</td><td class="item-desc" style="color:var(--accent)">Done</td></tr>
+            <tr><td class="item-id">US08</td><td class="item-title">Como Administrador, quiero listar, editar y suspender cuentas de Clientes</td><td class="item-desc" style="color:var(--accent)">Done</td></tr>
+            <tr><td class="item-id">US09</td><td class="item-title">Como Administrador, quiero ver el inventario global de propiedades de todas las Agencias</td><td class="item-desc" style="color:var(--accent)">Done</td></tr>
+            <tr><td class="item-id">US14</td><td class="item-title">Como Agencia, quiero actualizar mi perfil (logo, nombre, teléfono, descripción)</td><td class="item-desc" style="color:var(--accent)">Done</td></tr>
+            <tr><td class="item-id">US15</td><td class="item-title">Como Agencia, quiero crear propiedades con todos sus detalles en mi inventario</td><td class="item-desc" style="color:var(--accent)">Done</td></tr>
+            <tr><td class="item-id">US16</td><td class="item-title">Como Agencia, quiero subir y gestionar múltiples imágenes para una propiedad</td><td class="item-desc" style="color:var(--accent)">Done</td></tr>
+            <tr><td class="item-id">US17</td><td class="item-title">Como Agencia, quiero editar el precio, características y disponibilidad de mis propiedades</td><td class="item-desc" style="color:var(--accent)">Done</td></tr>
           </tbody>
         </table>
       </div>
     </div>
 
+    <!-- SPRINT 3 -->
     <div class="epica-card">
       <div class="epica-header" onclick="toggleEpica(this)">
-        <div class="epica-left"><span class="epica-num" style="color:var(--blue);border-color:var(--blue)">SPRINT 3</span><span class="epica-title">Web Cliente y Reservas</span></div>
-        <div class="epica-right"><span class="epica-count">14 tareas</span><span class="epica-arrow">▾</span></div>
+        <div class="epica-left"><span class="epica-num" style="color:var(--blue);border-color:var(--blue)">SPRINT 3</span><span class="epica-title">Gestión de Reservas y Schedulers</span></div>
+        <div class="epica-right"><span class="epica-count">5 historias</span><span class="epica-arrow">▾</span></div>
       </div>
       <div class="epica-body">
         <table class="items-table">
-          <thead><tr><th>Type</th><th>Título de la Tarea / Historia</th><th>Estado</th></tr></thead>
+          <thead><tr><th>ID</th><th>Título de la Historia de Usuario</th><th>Estado</th></tr></thead>
           <tbody>
-            <tr><td class="item-id">Story</td><td class="item-title">Como Cliente, quiero una página de inicio con un buscador principal (Ubicación y Fechas)</td><td class="item-desc" style="color:var(--accent)">Done</td></tr>
-            <tr><td class="item-id">Story</td><td class="item-title">Como Cliente, quiero ver un listado paginado de propiedades disponibles según mis filtros</td><td class="item-desc" style="color:var(--accent)">Done</td></tr>
-            <tr><td class="item-id">Story</td><td class="item-title">Como Cliente, quiero filtrar los resultados por características (precio, tipo, disponibilidad)</td><td class="item-desc" style="color:var(--accent)">Done</td></tr>
-            <tr><td class="item-id">Story</td><td class="item-title">Como Cliente, quiero ver el detalle completo de una propiedad (imágenes, descripción, agencia)</td><td class="item-desc" style="color:var(--accent)">Done</td></tr>
-            <tr><td class="item-id">Story</td><td class="item-title">Como Cliente, quiero registrarme o iniciar sesión desde la aplicación web</td><td class="item-desc" style="color:var(--accent)">Done</td></tr>
-            <tr><td class="item-id">Story</td><td class="item-title">Como Cliente, quiero un panel "Mi Cuenta" para gestionar mi perfil y preferencias de idioma</td><td class="item-desc" style="color:var(--accent)">Done</td></tr>
-            <tr><td class="item-id">Task</td><td class="item-title">Implementar modelo de datos de Reservas (Booking) con validación de fechas conflictivas</td><td class="item-desc" style="color:var(--accent)">Done</td></tr>
-            <tr><td class="item-id">Task</td><td class="item-title">Integrar API de Stripe y configurar webhooks de confirmación de pago</td><td class="item-desc" style="color:var(--accent)">Done</td></tr>
-            <tr><td class="item-id">Task</td><td class="item-title">Integrar API de PayPal (opcional/alternativo) como método de pago</td><td class="item-desc" style="color:var(--accent)">Done</td></tr>
-            <tr><td class="item-id">Story</td><td class="item-title">Como Cliente, quiero seleccionar fechas en el detalle de la propiedad y ver el precio total</td><td class="item-desc" style="color:var(--accent)">Done</td></tr>
-            <tr><td class="item-id">Story</td><td class="item-title">Como Cliente, quiero un flujo de Checkout seguro para ingresar mis datos de pago (Stripe)</td><td class="item-desc" style="color:var(--accent)">Done</td></tr>
-            <tr><td class="item-id">Task</td><td class="item-title">Implementar lógica de Backend para generar el recibo y enviar confirmación por email</td><td class="item-desc" style="color:var(--accent)">Done</td></tr>
-            <tr><td class="item-id">Story</td><td class="item-title">Como Cliente, quiero ver mi historial de reservas y su estado (Pendiente, Pagado, Cancelado)</td><td class="item-desc" style="color:var(--accent)">Done</td></tr>
-            <tr><td class="item-id">Story</td><td class="item-title">Como Agencia, quiero recibir una notificación por correo cuando se realiza una nueva reserva</td><td class="item-desc" style="color:var(--accent)">Done</td></tr>
+            <tr><td class="item-id">US10</td><td class="item-title">Como Administrador, quiero crear una reserva manualmente desde el panel</td><td class="item-desc" style="color:var(--accent)">Done</td></tr>
+            <tr><td class="item-id">US11</td><td class="item-title">Como Administrador, quiero gestionar y actualizar el estado de cualquier reserva</td><td class="item-desc" style="color:var(--accent)">Done</td></tr>
+            <tr><td class="item-id">US12</td><td class="item-title">Como Administrador, quiero ver un calendario visual con todas las reservas activas</td><td class="item-desc" style="color:var(--accent)">Done</td></tr>
+            <tr><td class="item-id">US18</td><td class="item-title">Como Agencia, quiero ver mis reservas activas en un calendario/scheduler</td><td class="item-desc" style="color:var(--accent)">Done</td></tr>
+            <tr><td class="item-id">US19</td><td class="item-title">Como Agencia, quiero recibir un correo cuando se confirma una nueva reserva</td><td class="item-desc" style="color:var(--accent)">Done</td></tr>
           </tbody>
         </table>
       </div>
     </div>
 
-    <div class="epica-card open" style="border-color: rgba(244,196,48,.4);">
+    <!-- SPRINT 4 -->
+    <div class="epica-card">
       <div class="epica-header" onclick="toggleEpica(this)">
-        <div class="epica-left"><span class="epica-num" style="color:var(--yellow);border-color:var(--yellow)">SPRINT 4</span><span class="epica-title">Aplicación Móvil y Ecosistema Push</span></div>
-        <div class="epica-right"><span class="epica-count">6 tareas</span><span class="epica-arrow">▾</span></div>
+        <div class="epica-left"><span class="epica-num" style="color:var(--blue);border-color:var(--blue)">SPRINT 4</span><span class="epica-title">Web Cliente y Flujo de Checkout</span></div>
+        <div class="epica-right"><span class="epica-count">11 historias</span><span class="epica-arrow">▾</span></div>
       </div>
       <div class="epica-body">
         <table class="items-table">
-          <thead><tr><th>Type</th><th>Título de la Tarea / Historia</th><th>Estado</th></tr></thead>
+          <thead><tr><th>ID</th><th>Título de la Historia de Usuario</th><th>Estado</th></tr></thead>
           <tbody>
-            <tr><td class="item-id">Task</td><td class="item-title">Inicializar proyecto con Expo, React Native y configurar navegación (React Navigation)</td><td class="item-desc" style="color:var(--yellow)">In Progress</td></tr>
-            <tr><td class="item-id">Story</td><td class="item-title">Como Cliente (Móvil), quiero poder iniciar sesión en mi cuenta desde la app</td><td class="item-desc" style="color:var(--yellow)">In Progress</td></tr>
-            <tr><td class="item-id">Story</td><td class="item-title">Como Cliente (Móvil), quiero usar el buscador y ver la lista de propiedades adaptada a pantallas pequeñas</td><td class="item-desc" style="color:var(--yellow)">In Progress</td></tr>
-            <tr><td class="item-id">Story</td><td class="item-title">Como Cliente (Móvil), quiero ver los detalles de la propiedad y mi historial de reservas</td><td class="item-desc" style="color:var(--yellow)">In Progress</td></tr>
-            <tr><td class="item-id">Task</td><td class="item-title">Configurar Expo Push Notifications e integrarlas con el Backend (Modelo PushToken)</td><td class="item-desc" style="color:var(--yellow)">In Progress</td></tr>
-            <tr><td class="item-id">Story</td><td class="item-title">Como Usuario (Móvil), quiero recibir notificaciones push sobre el estado de mis reservas</td><td class="item-desc" style="color:var(--yellow)">In Progress</td></tr>
+            <tr><td class="item-id">US20</td><td class="item-title">Como Cliente, quiero registrarme con email y contraseña en la plataforma web</td><td class="item-desc" style="color:var(--accent)">Done</td></tr>
+            <tr><td class="item-id">US21</td><td class="item-title">Como Cliente, quiero iniciar sesión en la plataforma web</td><td class="item-desc" style="color:var(--accent)">Done</td></tr>
+            <tr><td class="item-id">US22</td><td class="item-title">Como Cliente, quiero recuperar mi contraseña desde el sitio web</td><td class="item-desc" style="color:var(--accent)">Done</td></tr>
+            <tr><td class="item-id">US28</td><td class="item-title">Como Cliente, quiero completar el pago de mi reserva de forma segura con Stripe</td><td class="item-desc" style="color:var(--accent)">Done</td></tr>
+            <tr><td class="item-id">US30</td><td class="item-title">Como Cliente, quiero actualizar mi perfil y cambiar el idioma de la interfaz</td><td class="item-desc" style="color:var(--accent)">Done</td></tr>
+            <tr><td class="item-id">US29</td><td class="item-title">Como Cliente, quiero ver mi historial de reservas y cancelar una reserva pendiente</td><td class="item-desc" style="color:var(--accent)">Done</td></tr>
+            <tr><td class="item-id">US25</td><td class="item-title">Como Cliente, quiero filtrar los resultados por precio, tipo y características</td><td class="item-desc" style="color:var(--accent)">Done</td></tr>
+            <tr><td class="item-id">US26</td><td class="item-title">Como Cliente, quiero ver el detalle completo de una propiedad (imágenes, descripción, agencia)</td><td class="item-desc" style="color:var(--accent)">Done</td></tr>
+            <tr><td class="item-id">US27</td><td class="item-title">Como Cliente, quiero seleccionar fechas y ver el precio total antes de reservar</td><td class="item-desc" style="color:var(--accent)">Done</td></tr>
+            <tr><td class="item-id">US23</td><td class="item-title">Como Cliente, quiero ver una landing page con un buscador de propiedades por ubicación y fechas</td><td class="item-desc" style="color:var(--accent)">Done</td></tr>
+            <tr><td class="item-id">US24</td><td class="item-title">Como Cliente, quiero ver un listado paginado de propiedades disponibles según mis criterios</td><td class="item-desc" style="color:var(--accent)">Done</td></tr>
           </tbody>
         </table>
       </div>
     </div>
 
-    <div class="epica-card" style="border-color: rgba(90,122,117,.4);">
+    <!-- SPRINT 5 -->
+    <div class="epica-card">
       <div class="epica-header" onclick="toggleEpica(this)">
-        <div class="epica-left"><span class="epica-num" style="color:var(--muted);border-color:var(--border)">SPRINT 5</span><span class="epica-title">Despliegue y QA Final</span></div>
-        <div class="epica-right"><span class="epica-count">7 tareas</span><span class="epica-arrow">▾</span></div>
+        <div class="epica-left"><span class="epica-num" style="color:var(--blue);border-color:var(--blue)">SPRINT 5</span><span class="epica-title">Móvil (React Native)</span></div>
+        <div class="epica-right"><span class="epica-count">8 historias</span><span class="epica-arrow">▾</span></div>
       </div>
       <div class="epica-body">
         <table class="items-table">
-          <thead><tr><th>Type</th><th>Título de la Tarea / Historia</th><th>Estado</th></tr></thead>
+          <thead><tr><th>ID</th><th>Título de la Historia de Usuario</th><th>Estado</th></tr></thead>
           <tbody>
-            <tr><td class="item-id">Task</td><td class="item-title">Auditar seguridad (CORS, Rate Limiting, sanitización de inputs contra XSS/NoSQL Injection)</td><td class="item-desc" style="color:var(--muted)">Por hacer</td></tr>
-            <tr><td class="item-id">Task</td><td class="item-title">Integrar Sentry para monitoreo de errores en producción (Backend y Frontends)</td><td class="item-desc" style="color:var(--muted)">Por hacer</td></tr>
-            <tr><td class="item-id">Task</td><td class="item-title">Configurar despliegue de Base de Datos en producción (MongoDB Atlas - Tier Producción)</td><td class="item-desc" style="color:var(--muted)">Por hacer</td></tr>
-            <tr><td class="item-id">Task</td><td class="item-title">Desplegar servicios Frontend (Web y Admin) en Vercel o Netlify</td><td class="item-desc" style="color:var(--muted)">Por hacer</td></tr>
-            <tr><td class="item-id">Task</td><td class="item-title">Desplegar servidor Node.js/Express en plataforma de alojamiento (Render)</td><td class="item-desc" style="color:var(--muted)">Por hacer</td></tr>
-            <tr><td class="item-id">Task</td><td class="item-title">Configurar dominios personalizados y certificados SSL (HTTPS)</td><td class="item-desc" style="color:var(--muted)">Por hacer</td></tr>
-            <tr><td class="item-id">Task</td><td class="item-title">Escribir documentación final técnica en GitHub (README.md) y Wiki</td><td class="item-desc" style="color:var(--muted)">Por hacer</td></tr>
+            <tr><td class="item-id">US31</td><td class="item-title">Como Cliente (Móvil), quiero iniciar sesión desde mi dispositivo móvil</td><td class="item-desc" style="color:var(--accent)">Done</td></tr>
+            <tr><td class="item-id">US37</td><td class="item-title">Como Cliente (Móvil), quiero recibir notificaciones push sobre el estado de mis reservas</td><td class="item-desc" style="color:var(--accent)">Done</td></tr>
+            <tr><td class="item-id">US38</td><td class="item-title">Como Cliente (Móvil), quiero gestionar mi perfil y configuración desde la página</td><td class="item-desc" style="color:var(--accent)">Done</td></tr>
+            <tr><td class="item-id">US36</td><td class="item-title">Como Cliente (Móvil), quiero completar el pago de mi reserva desde mi dispositivo móvil con Stripe</td><td class="item-desc" style="color:var(--accent)">Done</td></tr>
+            <tr><td class="item-id">US35</td><td class="item-title">Como Cliente (Móvil), quiero ver los detalles de la propiedad y mi historial de reservas</td><td class="item-desc" style="color:var(--accent)">Done</td></tr>
+            <tr><td class="item-id">US34</td><td class="item-title">Como Cliente (Móvil), quiero buscar propiedades por ubicación y fechas y ver los resultados</td><td class="item-desc" style="color:var(--accent)">Done</td></tr>
+            <tr><td class="item-id">US33</td><td class="item-title">Como Cliente (Móvil), quiero recuperar mi contraseña olvidada desde el dispositivo móvil</td><td class="item-desc" style="color:var(--accent)">Done</td></tr>
+            <tr><td class="item-id">US32</td><td class="item-title">Como Cliente (Móvil), quiero registrarme con mis datos desde el dispositivo móvil</td><td class="item-desc" style="color:var(--accent)">Done</td></tr>
           </tbody>
         </table>
       </div>
